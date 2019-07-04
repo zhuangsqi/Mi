@@ -11,7 +11,7 @@
 |
 */
 
-
-Route::get('/',function(){
-	echo "二期项目 小米官网";
-});
+//模板继承
+Route::resource("/admin","Admin\AdminController");
+//后台的会员模块
+Route::resource("/adminuser","Admin\UserController");

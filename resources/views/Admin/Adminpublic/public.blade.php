@@ -77,7 +77,7 @@
 				<dd>
 					<ul>
 						<li><a data-href="member-list.html" data-title="会员列表" href="/adminuser/create">添加用户</a></li>
-						<li><a data-href="member-del.html" data-title="删除的会员" href="/adminuser/index">用户管理</a></li>
+						<li><a data-href="member-list.html" data-title="删除的会员" href="/adminuser">用户列表</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -87,21 +87,12 @@
 				<dt><i class="Hui-iconfont">&#xe60d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 				<dd>
 					<ul>
-						<li><a data-href="member-list.html" href="/adminusers/create">添加管理员</a></li>
-						<li><a data-href="member-del.html" href="/adminusers">管理员列表</a></li>
+						<li><a data-href="member-list.html" data-title="图片管理" href="/adminusers/create">添加管理员</a></li>
+						<li><a data-href="member-del.html" data-title="图片管理"  href="/adminusers">管理员列表</a></li>
 					</ul>
 				</dd>
 			</dl>
 		</dl>
-	<dl id="menu-picture">
-			<dt><i class="Hui-iconfont">&#xe613;</i>管理员<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a data-href="picture-list.html" data-title="图片管理" href="javascript:void(0)">管理员添加</a></li>
-					<li><a data-href="picture-list.html" data-title="图片管理" href="javascript:void(0)">修改权限</a></li>
-			</ul>
-		</dd>
-	</dl>
 	<dl id="menu-picture">
 			<dt><i class="Hui-iconfont">&#xe613;</i>分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
@@ -111,7 +102,6 @@
 			</ul>
 		</dd>
 	</dl>
-		
 </div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>

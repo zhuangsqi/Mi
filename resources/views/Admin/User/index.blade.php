@@ -1,4 +1,4 @@
-@extends("Admin.AdminPublic.public")
+@extends("Admin.Adminpublic.public")
 @section("main")
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户管理 <span class="c-gray en">&gt;</span> 用户查看<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
@@ -12,6 +12,7 @@
 			<tr>
 				<th scope="col" colspan="10">用户列表</th>
 			</tr>
+
 			<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
 				<th width="40">ID</th>
@@ -25,7 +26,8 @@
 				<th width="100">操作</th>
 			</tr>
 		</thead>
-		<tbody>
+	<tbody>
+			@foreach($data as $val)
 			<tr class="text-c">
 				<td><input type="checkbox" value="1" name=""></td>
 				<td>1</td>
@@ -42,5 +44,6 @@
 					<button title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></button>
 				</td>
 			</tr>
-@densection
+			@endforeach
+@endsection
 @section("title","后台用户管理")

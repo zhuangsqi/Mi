@@ -23,6 +23,7 @@ class CreateTableAdminuser extends Migration
             $table->string('face');
             $table->string('password');
             $table->string('createtime');
+            $table->tinyInteger('status');
             
         });
     }

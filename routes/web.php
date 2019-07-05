@@ -17,4 +17,4 @@ Route::resource("/adminuser","Admin\UserController");
 //后台无限分类模块
 Route::resource("/admincates","Admin\catesController");
 //后台管理员模块
-Route::resource("/adminsusers","Admin\AdminuserController");
+Route::resource("/adminusers","Admin\AdminuserController");

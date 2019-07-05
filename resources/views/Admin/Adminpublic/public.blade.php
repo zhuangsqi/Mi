@@ -28,7 +28,7 @@
 <body>
 <header class="navbar-wrapper">
 	<div class="navbar navbar-fixed-top">
-		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/admin/index">首页</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a> 
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/admin">首页</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a> 
 			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 			<nav class="nav navbar-nav">
 				<ul class="cl">
@@ -78,6 +78,17 @@
 					<ul>
 						<li><a data-href="member-list.html" data-title="会员列表" href="/adminuser/create">添加用户</a></li>
 						<li><a data-href="member-del.html" data-title="删除的会员" href="/adminuser/index">用户管理</a></li>
+					</ul>
+				</dd>
+			</dl>
+		</dl>
+		<dl id="menu-article">
+			<dl id="menu-member">
+				<dt><i class="Hui-iconfont">&#xe60d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<li><a data-href="member-list.html" href="/adminusers/create">添加管理员</a></li>
+						<li><a data-href="member-del.html" href="/adminusers">管理员列表</a></li>
 					</ul>
 				</dd>
 			</dl>

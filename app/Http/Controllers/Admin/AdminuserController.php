@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Hash;
+use DB;
 class AdminuserController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class AdminuserController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -24,7 +25,7 @@ class AdminuserController extends Controller
      */
     public function create()
     {
-        //
+        return view("Admin.Adminusers.add");
     }
 
     /**
@@ -35,7 +36,14 @@ class AdminuserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //执行添加
+       $data = $request->except('_token');
+       //密码加密
+       $data['password'] = Hash::make($data['password']);
+       //执行添加入库
+       if(DB::table("admin_users")->insert($data)){
+        echo "ok";
+       }
     }
 
     /**

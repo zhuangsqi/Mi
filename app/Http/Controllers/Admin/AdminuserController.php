@@ -4,12 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-//导入Hash类
-use Hash;
-use DB;
-//导入要调用的模型类
-//use App\Providers\Userss;
-class UserController extends Controller
+
+class AdminuserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-      
+        //
     }
 
     /**
@@ -28,8 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //加载添加用户的页面
-        return view("Admin.Admin.add");
+        //
     }
 
     /**
@@ -40,16 +35,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //添加用户
-       	// dd($_POST);
-       	$data = $request->except(['_token']);
-       	//加密密码
-       	$data['password'] = Hash::make($data['password']);
-       	if(DB::create($data)){
-       		return redirect("/adminuser")->with("success","添加成功");
-       	}else{
-       		return back()->with("error","添加失败");
-       	}
+        //
     }
 
     /**
@@ -60,8 +46,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-         //加载用户首页
-       return view("Admin.User.index"); 
+        //
     }
 
     /**

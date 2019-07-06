@@ -36,6 +36,7 @@
 				<td>admin@mail.com</td>
 				<td>头像</td>
 				<td>注册时间</td>
+				
 				<td class="td-manage">
 					<button title="修改" href="javascript:;" onclick="admin_edit('用户修改','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i>
 					</button> 

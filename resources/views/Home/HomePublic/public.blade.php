@@ -8,7 +8,7 @@
 		<script src="/static/Home/js/base.min.js"></script>
 		<script src="/static/Home/js/home.min.js"></script> 
 		<link rel="stylesheet" href="/static/Home/css/base.min.css" /> 
-  		<link rel="stylesheet" href="/static/Home/css/index.min.css" />
+  		<!--<link rel="stylesheet" href="/static/Home/css/index.min.css" />-->
 	</head>
 	<body>
 	<!-- start header -->
@@ -47,10 +47,17 @@
       </div> 
      </div> 
     </div> 
-    <div class="topbar-info" id="J_userInfo"> 
-     <a rel="nofollow" class="link" href="" data-agreement="true" data-login="true">登录</a>
+    <div class="topbar-info" id="J_userInfo">
+    @if(session()->has('name') == null)
+     <a rel="nofollow" class="link" href="/login" data-agreement="true" data-login="true">登录</a>
      <span class="sep">|</span>
-     <a rel="nofollow" class="link" href="" data-agreement="true" data-register="true">注册</a> 
+     <a rel="nofollow" class="link" href="/register" data-agreement="true" data-register="true">注册</a>
+    @else
+      <a class="">{{session('name')}}</a>
+      <div class="user_name">
+        
+      </div>
+    @endif
     </div> 
    </div> 
   </div> 
@@ -140,8 +147,7 @@
       <label for="search" class="hide">站内搜索</label> 
       <input class="search-text" type="search" id="search" name="keyword" autocomplete="off" data-search-config="{'defaultWords':[{'Key':'小米9','Rst':22},{'Key':'Redmi&nbsp;K20&nbsp;Pro','Rst':4},{'Key':'Redmi&nbsp;K20','Rst':10},{'Key':'Redmi&nbsp;Note&nbsp;7','Rst':7},{'Key':'Redmi&nbsp;Note&nbsp;7&nbsp;Pro','Rst':1},{'Key':'小米电视4C','Rst':10},{'Key':'电视32英寸','Rst':5},{'Key':'笔记本pro','Rst':6},{'Key':'小爱音箱','Rst':5},{'Key':'净水器','Rst':16}]}" /> 
       <input type="submit" class="search-btn iconfont" value="" /> 
-      <div class="search-hot-words"> 
-      </div> 
+     
      </form> 
     </div> 
    </div> 

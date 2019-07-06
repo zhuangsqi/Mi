@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         //路由注册 login是规则名字  \App\Http\Middleware\LoginMiddleware::class 加载的中间件类
         'login' => \App\Http\Middleware\LoginMiddleware::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'homelogin' => \App\Http\Middleware\HomeLogin::class,
     ];
 }

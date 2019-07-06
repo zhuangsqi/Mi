@@ -1,75 +1,137 @@
-/*样式初始化*/
-*{margin:0;padding: 0;}
-a{text-decoration: none;color: #000;}
-img {border: 0; vertical-align:middle;} 
-ul li{list-style: none;}
-body,h1,h2,h3,h4,h5,h6{font: 12px 宋体,Times New Roman;}
-body{background: rgb(20,33,42)  }
 
 /*预定义样式*/
-.w{width: 1000px;margin: 0 auto;}
-.fl{float: left;}
-.fr{float: right;}
+.fl{float:left;}
+.fr{float:right;}
 .clear{clear:both;}
-.center{margin:0 auto;}
 .border{border:1px solid red;}
+.mt20{margin-top:30px;}
 
-table{width: 360px;height: 240px;border:none;margin: 0 auto;}
-tr,th,td{height: 20px;}
-th{width: 60px;}
-input:focus{border: 2px solid orange;}
-/*用户登录*/
-.top{width: 100%;height: 100px;background: #fff;}
-.top .logo{width: 1130px;height: 100px;}
-.form{width: 1130px;height:588px;background: url('../image/login_bg.jpg')no-repeat center center; }
-.login{width: 400px;height: 470px;/*border:1px solid #ff6700;*/margin:30px auto;background: #444;color:#fff;margin-right: 0px;border-radius: 4px;}
-.login .login_center{width: 360px;margin: 10px auto;}
-.login .login_top{margin: 10px 0;}
-.login .login_top .left{height: 40px;line-height: 40px;font-weight: bold;font-size: 20px;}
-.login .login_top .right{height: 40px;line-height: 40px;font-size: 13px;}
-.login .login_top .right a{color:red;font-weight: bold;}
-.login .login_top .right a:hover{color:orange;}
-.xian{height: 2px;background: #ff6700;margin:8px 0;}
+input{border:0;outline:none;}
+a{color:#00007F;text-decoration:none;}
+ul li{list-style:none;}
+body {margin: 0px; padding:0px;}
 
-.login_main{padding:20px 0;}
-.login_main .username{font:16px Times New Roman;height: 40px;line-height: 40px;margin:35px 0;}
-.login_main .username .shurukuang{width: 220px;height: 30px;border:1px solid #ccc;padding:5px 10px; }
-.login_main .username .yanzhengma{width: 100px;height: 30px;border:1px solid #ccc;padding:5px 10px; }
-.login_main .username .shurukuang:focus{border: 1px solid blue;background: #F0FFFF;}
-.login_main .username .yanzhengma:focus{border: 1px solid blue;background: #F0FFFF;}
-.login_main .username .right{margin-left: 20px;}
+    .h_panel,
+    .login_banner {
+        width: 1130px;
+        margin: 0 auto;
+    }
 
-/*设置按钮样式*/
-.login .login_center .login_submit{margin: 15px auto;}
-.login .login_center .submit{border:none;width: 240px;height: 45px;margin-left:55px;background: #ff6700;color: #fff; font-size: 20px;font-weight: bold;letter-spacing: 2px;cursor:pointer;border-radius: 4px;}
-.login .login_center .submit:hover{border:1px solid #fff;}
+    .h_logo {
+        width: 200px;
+        height: 98px;
+        background: url(../image/mistore_logo.png) no-repeat;
+    }
+
+    
+
+    .login_banner_panel {
+        /* background:#1e2f40;*/
+        width: 100%;
+        height: 588px;
+        position: absolute;
+        left: 0;
+        top: 98px;
+        background-repeat: no-repeat;
+        background-position: top center;
+    }
+
+    .login_banner_panel .layout{
+        width:1330px;
+        height:588px;
+        margin:0px auto;
+        
+    }
+    .login_banner_panel .layout .login{
+		width:410px;
+		height:522px;
+		margin-top:66px;
+		margin-right:60px;
+        background-color:#FFF;
+    }
+	.login_banner_panel .layout .nav_tabs {
+		padding: 15px 0 10px;
+		text-align: center;
+	}
+
+	.login_banner_panel .layout .nav_tabs a {
+		color: #f56600;
+        font-size:30px;
+	}
+
+	.login_banner_panel .layout .nav_tabs a:hover,.nav_tabs a.now {
+		color: #f56600;
+	}
+
+	.login_banner_panel .layout .nav_tabs.only .line,.nav_tabs.only a:last-child {
+		display: none
+	}
+
+    .login_banner_panel .login_form{
+        width:360px;
+        height:400px;
+        margin:0px auto;
+    }
+    .login_banner_panel .item_account{
+    	padding-left:20px;
+        height:47px;
+        width:320px;
+        border:1px #ccc solid;
+    }
+    
+.login_banner_panel .login_form .btnadpt {
+	height:47px;
+    width:340px;
+	background: none;
+	border: 1px solid #ff6700;
+	color: #ff6700
+}
+.login_banner_panel .login_form .btnadpt:hover{
+	color: #fff;
+	background:#ff6700
+}
+.n_links_area {
+    padding-top: 0px;
+    color: #999
+}
+
+.n_links_area a {
+    color: #999;
+    font-size:15px;
+}
+
+.n_links_area a:hover {
+    color: #f56600
+}
+
+.n-footer {
+	background: #fff;
+	margin-top: 0;
+	padding-top: 80px;
+	position: relative;
+	width:100%;
+	height:;
+}
+.n-footer .nf-link-area{
+	width:425px;
+	margin:0px auto;
+}
+.n-footer .nf-link-area ul .lang-select-li{
+	padding:10px;
+	color:#999;
+}
+.n-footer .nf-link-area ul li{
+	color:#999;
+}
 
 
-/*用户注册*/
-.regist{width: 1000px;height: 550px;margin:20px auto;background:#fff;color:#000;border-radius: 6px;}
-.regist_center{width: 760px;margin: 10px auto;}
-.regist .regist_top{margin: 10px 0;}
-.regist .regist_top .left{height: 40px;line-height: 40px;font-weight: bold;font-size: 20px;}
-.regist .regist_top .right{height: 40px;line-height: 40px;font-size: 13px;}
-.regist .regist_top .right a{color:#ff6700;font-weight: bold;}
-.regist .regist_top .right a:hover{color:orange;}
-.xian{height: 2px;background: #ff6700;margin: 8px auto;}
-
-.regist_main{padding:10px 0;padding-left:45px;}
-.regist_main .username{font:16px Times New Roman;height: 40px;line-height: 40px;margin:20px 0;}
-.regist_main .username .shurukuang{width: 220px;height: 30px;border:1px solid #ccc;padding:5px 10px; }
-.regist_main .username .yanzhengma{width: 100px;height: 30px;border:1px solid #ccc;padding:5px 10px; }
-.regist_main .username .shurukuang:focus{border: 1px solid blue;background: #F0FFFF;}
-.regist_main .username .yanzhengma:focus{border: 1px solid blue;background: #F0FFFF;}
-.regist_main .username .right{margin-left: 20px;}
-
-.regist_main .username span{display:inline-block;margin-left:20px;font-size: 12px;color: #ccc;font-weight: bold;}
-.regist_main .username span:hover{color: #ff6700;}
-
-.regist .regist_center .regist_submit{margin: 20px auto;}
-.regist .regist_center .submit{border:none;width: 440px;height: 45px;margin-left:45px;background: #ff6700;color: #fff; font-size: 22px;font-weight: bold;letter-spacing: 8px;cursor:pointer;}
-.regist .regist_center .submit:hover{border:1px solid #ccc;}
-
-footer{width: 100%;height: 80px;background:#fff;padding: 30px 0;}
-footer .copyright{height: 30px;line-height: 30px;font-size: 13px;word-spacing: 15px;text-align: center;}
-footer .copyright:first-of-type{margin-top: 10px;}
+.n-footer .nf-link-beian{
+	width:700px;
+	margin:0px auto;
+}
+.n-footer .nf-link-beian .nf-intro{
+	color:#999;
+}
+.n-footer .nf-link-beian .nf-intro .beian-record-link{
+	color:#999;
+}

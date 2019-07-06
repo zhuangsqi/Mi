@@ -1,48 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-        <meta name="author" content="order by dede58.com"/>
-		<title>会员登录</title>
-		<link rel="stylesheet" type="text/css" href="/static/Home/css/login.css">
-		
-	</head>
-	<body>
-		<!-- login -->
-		<div class="top center">
-			<div class="logo center">
-				<a href="./index.html" target="_blank"><img src="/static/Home/image/mistore_logo.png" alt=""></a>
-			</div>
-		</div>
-		<form  method="post" action="./login.php" class="form center">
-		<div class="login">
-			<div class="login_center">
-				<div class="login_top">
-					<div class="left fl">会员登录</div>
-					<div class="right fr">您还不是我们的会员？<a href="./register.html" target="_self">立即注册</a></div>
-					<div class="clear"></div>
-					<div class="xian center"></div>
-				</div>
-				<div class="login_main center">
-					<div class="username">用户名:&nbsp;<input class="shurukuang" type="text" name="username" placeholder="请输入你的用户名"/></div>
-					<div class="username">密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;<input class="shurukuang" type="password" name="password" placeholder="请输入你的密码"/></div>
-					<div class="username">
-						<div class="left fl">验证码:&nbsp;<input class="yanzhengma" type="text" name="username" placeholder="请输入验证码"/></div>
-						<div class="right fl"><img src="/static/Home/image/yanzhengma.jpg"></div>
-						<div class="clear"></div>
-					</div>
-				</div>
-				<div class="login_submit">
-					<input class="submit" type="submit" name="submit" value="立即登录" >
-				</div>
-				
-			</div>
-		</div>
-		</form>
-		<footer>
-			<div class="copyright">简体 | 繁体 | English | 常见问题</div>
-			<div class="copyright">小米公司版权所有-京ICP备10046444-<img src="/static/Home/image/ghs.png" alt="">京公网安备11010802020134号-京ICP证110507号</div>
-
-		</footer>
-	</body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/static/Home/css/Login.css">
+    <title>小米商城</title>
+</head>
+<body>
+    <div class="h_panel">
+        <a href=""><div class="h_logo"></a>
+    </div>
+    </div>
+    <div class="login_banner_panel" id="J_panel" style="background-image: url(/static/Home/image/f838fdcd77715410b441f2f56d8f10cd.jpg);">
+        <div class="layout">
+            <div class="login fr">
+                <div id="nav-tabs" class="nav_tabs mt20">
+                    <a class="navtab-link now" data-tab="pwd">帐号登录</a>  
+                </div>
+                <div class="login_form ">
+                    <form action="/login" method="POST" id="login-main-form"  align="center">    
+                        <input class="item_account mt20" type="text" name="username" id="username" placeholder="账号">
+                        <input class="item_account mt20" type="password" id="pwd" name="password" placeholder="密码">
+                        <input class="btnadpt mt20" id="login-button" type="submit" value="登 录">
+                        <div class="n_links_area mt20">
+                            <a class="outer-link" href="/user">立即注册</a>
+                            <span> |</span>
+                            <a class="outer-link" href="">忘记密码？</a>
+                        </div>
+                        {{csrf_field()}}
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="custom_display_4" class="n-footer">
+		    <div class="nf-link-area">
+		      <ul class="lang-select-list">
+		        <li class="fl"><a href="" data-lang="zh_CN" class="lang-select-li current">简体</a>|</li>
+		        <li class="fl"><a href="" data-lang="zh_TW" class="lang-select-li">繁体</a>|</li>
+		        <li class="fl"><a href="" data-lang="en" class="lang-select-li">English</a>|</li>
+		        <li class="fl"><a href="" class="lang-select-li">常见问题</a>|</li>
+		        <li class="fl"><a href="" class="lang-select-li" target="_blank">隐私政策</a></li>
+		        <div class="clear"></div>
+		      </ul>
+		    </div>
+		    <div class="nf-link-beian">
+			    <p class="nf-intro">小米公司版权所有-京ICP备10046444-
+				    <a class="beian-record-link" target="_blank" href="">
+					    <span>
+					    	<img src="/static/Home/image/ghs.png">
+					    </span>京公网安备11010802020134号
+					</a>-京ICP证110507号
+			    </p>
+		    </div>
+	  	</div>
+    </div>
+   
+</body>
 </html>

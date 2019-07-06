@@ -4,10 +4,10 @@
 		<meta charset="UTF-8">
         <meta name="author" content="order by dede58.com"/>
 		<title>用户注册</title>
-		<link rel="stylesheet" type="text/css" href="/static/Home/css/login.css">
+		<link rel="stylesheet" type="text/css" href="/static/Home/css/register.css">
 	</head>
 	<body>
-		<form  method="post" action="./regist.php">
+		<form  method="post" action="">
 		<div class="regist">
 			<div class="regist_center">
 				<div class="regist_top">

@@ -26,5 +26,6 @@ Route::resource('/','Home\Indexcontroller');
 Route::resource('/register','Home\RegisterController');
 //登录
 Route::resource('/login','Home\LoginController');
+
 //个人中心
 Route::resource('/user','Home\Usercontroller');

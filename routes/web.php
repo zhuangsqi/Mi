@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 //登录和退出
 Route::resource("/adminlogin","Admin\AdminLoginController");
 

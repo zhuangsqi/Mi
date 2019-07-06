@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use DB;
+use Hash;
+
 class AdminLoginController extends Controller
 {
     /**
@@ -12,8 +15,14 @@ class AdminLoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+    public function index(Request $request)
     {
+        //退出
+        //销毁session
+        
+        //跳转登录界面
         return redirect("/adminlogin/create");
     }
 
@@ -35,7 +44,14 @@ class AdminLoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //检测当前登录的管理员和密码是否在数据表里
+        $name = $request->input("name");
+        $password = $request->input("password");
+        //检测管理员名字
+        $info = DB::table("admin_user")->where("name","=",$name)->first();
+        if($info){
+            
+        }
     }
 
     /**

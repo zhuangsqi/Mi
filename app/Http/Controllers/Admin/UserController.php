@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\LengthAwarePaginator;
 //导入Hash类
 use Hash;
 use DB;
 //导入要调用的模型类
-//use App\Providers\Userss;
+//use App\Providers\Userss
+use App\Http\Requests\UsersInsertRequest;
 class UserController extends Controller
 {
     /**
@@ -21,10 +23,10 @@ class UserController extends Controller
         //获取搜索的参数
         $k = $request->input("keyword");
         //获取列表数据
-        $data = DB::table("users")->where("username","like","%".$k."%")->paginate(3);
+        $data = DB::table("adminuser")->where("name","like","%".$k."%")->paginate(3);
         // $data = Userss::where("username","like","%".$k."%")->paginate(3);
         //加载模板
-        return view("Admin.User.index");
+        return view("Admin.User.index",['data'=>$data,'request'=>$request->all()]);
     }
 
     /**
@@ -44,18 +46,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsersInsertRequest $request)
     {
         //添加用户
        	// dd($_POST);
        	$data = $request->except(['_token']);
        	//加密密码
        	$data['password'] = Hash::make($data['password']);
-       	if(DB::create($data)){
+        $data['creattime'] = time("Y-m-d H:i:s");
+       	if(DB::table("adminuser")->insert($data)){
        		return redirect("/adminuser")->with("success","添加成功");
+
        	}else{
        		return back()->with("error","添加失败");
        	}
+
     }
 
     /**
@@ -90,7 +95,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -101,6 +106,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(DB::table("adminuser")->where("id","=",$id)->delete()){
+            return redirect("/adminuser")->with("success","删除成功");
+        }else{
+            return redirect("/adminuser")->with("success",'删除失败');
+        }
     }
 }

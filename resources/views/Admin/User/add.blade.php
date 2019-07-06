@@ -50,7 +50,8 @@
 				<input class="input-text upload-url" type="text" name="face" id="face" readonly nullmsg="请添加附件！" style="width:200px">
 				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
 				<input type="file" multiple name="face" class="input-file">
-				</span> </div>
+				</span> 
+			</div>
 		</div>
 		<div class="row cl">
 		{{csrf_field()}}

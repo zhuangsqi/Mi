@@ -13,10 +13,12 @@
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <![endif]-->
 <link rel="stylesheet" type="text/css" href="/static/Admins/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/Admins/static/h-ui.admin/css/my.css" />
 <link rel="stylesheet" type="text/css" href="/static/Admins/static/h-ui.admin/css/H-ui.admin.css" />
 <link rel="stylesheet" type="text/css" href="/static/Admins/lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="/static/Admins/static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="/static/Admins/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/public/static/css/bootstrap.css">
 <!--[if IE 6]>
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -50,7 +52,7 @@
 					<ul class="dropDown-menu menu radius box-shadow">
 						<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
 						<li><a href="#">切换账户</a></li>
-						<li><a href="#">退出</a></li>
+						<li><a href="/adminlogin">退出</a></li>
 				</ul>
 			</li>
 				<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
@@ -109,37 +111,25 @@
 @section("main")
 @show
 </section>
-<div class="contextMenu" id="Huiadminmenu">
-	<ul>
-		<li id="closethis">关闭当前 </li>
-		<li id="closeall">关闭全部 </li>
-</ul>
-</div>
-
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/static/Admins/lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="/static/Admins/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="/static/Admins/static/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript" src="/static/Admins/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
-<!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="/static/Admins/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
-$(function(){
-	/*$("#min_title_list li").contextMenu('Huiadminmenu', {
-		bindings: {
-			'closethis': function(t) {
-				console.log(t);
-				if(t.find("i")){
-					t.find("i").trigger("click");
-				}		
-			},
-			'closeall': function(t) {
-				alert('Trigger was '+t.id+'\nAction was Email');
-			},
-		}
-	});*/
+$('.table-sort').dataTable({
+	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+	"bStateSave": true,//状态保存
+	"aoColumnDefs": [
+	  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+	  {"orderable":false,"aTargets":[0,8]}// 制定列不参与排序
+	]
 });
+
 
 
 </script> 

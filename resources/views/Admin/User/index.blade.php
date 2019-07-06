@@ -30,20 +30,40 @@
 			@foreach($data as $val)
 			<tr class="text-c">
 				<td><input type="checkbox" value="1" name=""></td>
-				<td>1</td>
-				<td>admin</td>
-				<td>密码</td>
-				<td>男</td>
-				<td>1000000000</td>
-				<td>admin@mail.com</td>
-				<td>头像</td>
-				<td>注册时间</td>
+				<td>{{$val->id}}</td>
+				<td>{{$val->name}}</td>
+				<td>{{$val->password}}</td>
+				<td>{{$val->sex}}</td>
+				<td>{{$val->phone}}</td>
+				<td>{{$val->email}}</td>
+				<td>{{$val->face}}</td>
+				<td>{{date('Y-m-d H:i:s')}}</td>
 				<td class="td-manage">
-					<button title="修改" href="javascript:;" onclick="admin_edit('用户修改','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i>
+					
+					<button title="修改" href="javascript:;" onclick="admin_edit('用户修改','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none;float:right;margin-right:15px;"><i class="Hui-iconfont">&#xe6df;</i>
 					</button> 
-					<button title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></button>
+				
+					<form action="/adminuser/{{$val->id}}" method="post">
+					{{method_field("DELETE")}}
+					{{csrf_field()}}
+					<button title="删除" href="/adminuser/{{$val->id}}" onclick="admin_del(this,'1')" class="ml-5" 	style="text-decoration:none;float:right;"><i class="Hui-iconfont">&#xe6e2;</i></button>
+					</form>
 				</td>
+
 			</tr>
+			
 			@endforeach
+
+			</tbody>
+			</table>
+			</div>
+			
+		<!-- <div class="" id="DataTables_Table_0_paginate">
+			<span>
+				<a class="paginate_button current" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">{{$data->appends($request)->render()}}</a>
+			</span>
+		</div> -->
+		
 @endsection
+
 @section("title","后台用户管理")

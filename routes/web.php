@@ -29,3 +29,6 @@ Route::resource('/login','Home\LoginController');
 
 //个人中心
 Route::resource('/user','Home\Usercontroller');
+
+//前台退出登录
+Route::get('/uplogin','Home\Indexcontroller@uplogin');

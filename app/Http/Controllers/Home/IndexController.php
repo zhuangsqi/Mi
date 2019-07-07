@@ -12,8 +12,8 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(Request $request)
+    {   
         return view('Home.Index.index');
         
     }
@@ -82,5 +82,11 @@ class IndexController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //退出登录
+    public function uplogin(Request $request){
+        $request->session()->pull('name');
+        return redirect('/');
     }
 }

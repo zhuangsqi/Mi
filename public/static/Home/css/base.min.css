@@ -1,7 +1,7 @@
 article,aside,details,figcaption,figure,footer,header,main,nav,section,summary {
 	display: block
 }
-
+ul li{list-style:none;}
 audio,canvas,video {
 	display: inline-block;
 	*display: inline;
@@ -1632,7 +1632,7 @@ textarea.input-text {
 	*display: inline
 }
 
-.site-topbar a:hover {
+.site-topbar .topbar-nav a:hover {
 	color: #fff
 }
 
@@ -1642,7 +1642,7 @@ textarea.input-text {
 }
 
 .site-topbar .topbar-nav {
-	float: left;
+	float: left; 
 	height: 40px;
 	line-height: 40px
 }
@@ -1653,11 +1653,27 @@ textarea.input-text {
 	_display: inline;
 	height: 40px
 }
+/* 登录用户 购物车 */
+.site-topbar .topbar-info .user_name{
+	width:120px;
+	text-align: center;
+}
+.site-topbar .topbar-info .user_name .user_name_none{
+	width:120px;
+	height:165px;
+	background:#fff;
+	display:none;
+}
+.site-topbar .topbar-cart a:hover,.site-topbar .topbar-info .user_name a:hover,.site-topbar .topbar-info .user_name .user_name_none a:hover{
+	color:#ff6700;
+}
 
 .site-topbar .topbar-cart {
 	width: 120px;
 	margin-left: 15px
 }
+
+
 
 .site-topbar .topbar-cart-filled .cart-mini {
 	color: #fff;

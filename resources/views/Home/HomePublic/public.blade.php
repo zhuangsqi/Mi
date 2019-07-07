@@ -6,9 +6,8 @@
 		<title>@yield("title")</title>
 		<link rel="stylesheet" type="text/css" href="/static/Home/css/style.css">
 		<script src="/static/Home/js/base.min.js"></script>
-		<script src="/static/Home/js/home.min.js"></script> 
 		<link rel="stylesheet" href="/static/Home/css/base.min.css" /> 
-  		<!--<link rel="stylesheet" href="/static/Home/css/index.min.css" />-->
+  	<!--<link rel="stylesheet" href="/static/Home/css/index.min.css" />-->
 	</head>
 	<body>
 	<!-- start header -->
@@ -53,9 +52,13 @@
      <span class="sep">|</span>
      <a rel="nofollow" class="link" href="/register" data-agreement="true" data-register="true">注册</a>
     @else
-      <a class="">{{session('name')}}</a>
-      <div class="user_name">
-        
+      <div class="user_name"><a id="user_name" class="">{{session('name')}}</a>
+        <div id="user_name_none" class="user_name_none">
+          <a href=" ">个人中心</a>
+          <a href=" ">我的订单</a>
+          <a href=" ">我的账号</a>
+          <a href="/uplogin">退出登录</a>
+        </div>
       </div>
     @endif
     </div> 
@@ -163,4 +166,18 @@
 			<div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>
 		</footer>
 	</body>
+  <script>
+    var user_name = document.getElementById('user_name');
+    var user_name_none = document.getElementById('user_name_none');
+    var timmer;
+    user_name.onmouseover = user_name_none.onmouseover = function(){
+      clearTimeout(timmer);
+      user_name_none.style.display="block";
+    }
+    user_name.onmouseout = user_name_none.onmouseout = function(){
+      timmer = setTimeout(function(){
+        user_name_none.style.display="none";
+      },300)
+    }
+  </script>
 </html>

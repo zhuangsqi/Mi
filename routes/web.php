@@ -14,7 +14,16 @@
 //登录和退出
 Route::resource("/adminlogin","Admin\AdminLoginController");
 
-//模板继承
-Route::resource("/admin","Admin\AdminController");
-//后台的会员模块
-Route::resource("/adminuser","Admin\UserController");
+Route::group(['middleware'=>"login"],function(){
+
+		//模板继承
+	Route::resource("/admin","Admin\AdminController");
+	//后台的会员模块
+	Route::resource("/adminuser","Admin\UserController");
+
+	//后台无线分类模块
+	Route::resource("/admincates","Admin\catesController");
+	//后台管理员模块
+	Route::resource("/adminusers","Admin\AdminuserController");
+});
+

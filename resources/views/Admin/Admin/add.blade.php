@@ -2,7 +2,6 @@
 
 @section('main')
 <article class="page-container">
-<<<<<<< HEAD
 	<form action="/adminuser" method="post" class="form form-horizontal" id="form-member-add">
 		 @if (count($errors) > 0)
        <div class="jquery.validation error">
@@ -15,9 +14,8 @@
           </div>
        </div>
 		@endif
-=======
+
 	<form action="/adminuser/create" method="post" class="form form-horizontal" id="form-member-add">
->>>>>>> 72c7f6875fa555da784579f180ca575341e45a2b
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
 			<div class="formControls col-xs-8 col-sm-9">

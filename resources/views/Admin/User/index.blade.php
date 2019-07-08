@@ -30,7 +30,6 @@
 			@foreach($data as $val)
 			<tr class="text-c">
 				<td><input type="checkbox" value="1" name=""></td>
-<<<<<<< HEAD
 				<td>{{$val->id}}</td>
 				<td>{{$val->name}}</td>
 				<td>{{$val->password}}</td>
@@ -39,17 +38,6 @@
 				<td>{{$val->email}}</td>
 				<td>{{$val->face}}</td>
 				<td>{{date('Y-m-d H:i:s')}}</td>
-=======
-				<td>1</td>
-				<td>admin</td>
-				<td>密码</td>
-				<td>男</td>
-				<td>1000000000</td>
-				<td>admin@mail.com</td>
-				<td>头像</td>
-				<td>注册时间</td>
-				
->>>>>>> 72c7f6875fa555da784579f180ca575341e45a2b
 				<td class="td-manage">
 					
 					<button title="修改" href="javascript:;" onclick="admin_edit('用户修改','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none;float:right;margin-right:15px;"><i class="Hui-iconfont">&#xe6df;</i>

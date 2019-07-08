@@ -43,7 +43,6 @@ class AdminuserController extends Controller
        $data = $request->except('_token');
        //密码加密
        $data['password'] = Hash::make($data['password']);
-       dd($data);
        //执行添加入库
        if(DB::table("admin_users")->insert($data)){
         echo "ok";

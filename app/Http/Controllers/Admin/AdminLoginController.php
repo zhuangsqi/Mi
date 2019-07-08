@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use DB;
 use Hash;
 
@@ -61,10 +60,12 @@ class AdminLoginController extends Controller
                 // dd($list);
                 //2.初始化权限信息  让所有管理员都可以访问到后台首页 Admin控制器名字 index方法
                 $nodelist['AdminController'][]="index";
+                // dd($nodelist);
                 // //遍历
                 foreach($list as $key=>$value){
                     //把权限写入到$nodelist
                     $nodelist[$value->mname][]=$value->aname;
+                    // dd($nodelist);
                     //如果有create方法 加入store方法
                     if($value->aname=="create"){
                         $nodelist[$value->mname][]="store";
@@ -77,6 +78,7 @@ class AdminLoginController extends Controller
                     }
                 }               
 
+                // dd($nodelist);
                 //3.把初始化后的当前登录用户的权限信息写入session
                 session(['nodelist'=>$nodelist]);
                 // dd($nodelist);

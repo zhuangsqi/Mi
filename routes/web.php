@@ -25,5 +25,8 @@ Route::group(['middleware'=>"login"],function(){
 	Route::resource("/admincates","Admin\catesController");
 	//后台管理员模块
 	Route::resource("/adminusers","Admin\AdminuserController");
+	Route::get("/adminss",function(){
+		echo "111111111";
+	});
 });
 

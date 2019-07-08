@@ -15,6 +15,7 @@ class CatesController extends Controller
     public function index(Request $request)
     {
         //获取搜索关键词
+        // echo "ssss";
         $k=$request->input('keyword');
         //调整类别顺序连贯方法 Raw 原始表达式,防止sql语句注入
         $cates=DB::table("cates")->select(DB::raw("*,concat(path,',',id)as paths"))->where("name","like","%".$k."%")->orderBy("paths")->get();

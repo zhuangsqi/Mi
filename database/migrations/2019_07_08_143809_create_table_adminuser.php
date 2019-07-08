@@ -24,7 +24,7 @@ class CreateTableAdminuser extends Migration
             $table->string('password');
             $table->string('createtime');
             $table->tinyInteger('status');
-            
+            $table->string('token');
         });
     }
 

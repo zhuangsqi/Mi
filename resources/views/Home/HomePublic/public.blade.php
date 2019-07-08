@@ -54,10 +54,10 @@
     @else
       <div class="user_name"><a id="user_name" class="">{{session('name')}}</a>
         <div id="user_name_none" class="user_name_none">
-          <a href=" ">个人中心</a>
-          <a href=" ">我的订单</a>
-          <a href=" ">我的账号</a>
-          <a href="/uplogin">退出登录</a>
+          <li><a href=" ">个人中心</a></li>
+          <li><a href=" ">我的订单</a></li>
+          <li><a href=" ">我的账号</a></li>
+          <li><a href="/uplogin">退出登录</a></li>
         </div>
       </div>
     @endif

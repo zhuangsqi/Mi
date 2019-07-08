@@ -135,3 +135,71 @@ body {margin: 0px; padding:0px;}
 .n-footer .nf-link-beian .nf-intro .beian-record-link{
 	color:#999;
 }
+
+.mws-form-message {
+
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid #d2d2d2;
+    padding: 15px 8px 8px 4px;
+    position: relative;
+    vertical-align: middle;
+    background-color: #f8f8f8;
+    background-position: 12px 12px;
+    background-repeat: no-repeat;
+    margin-bottom: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px
+}
+
+.mws-form-message p,.mws-form-message ul,.mws-form-message ol {
+    margin: 0
+}
+
+.mws-form-message ul li,.mws-form-message ol li {
+    list-style-position: inside;
+    list-style-type: inherit;
+    margin: 0
+}
+
+.mws-form-message.error {
+    
+    background-color: #ffcbca;
+    background-image: url(../image/message-error.png);
+    border-color: #eb979b;
+    color: #9b4449
+}
+
+.mws-form-message.success {
+    background-color: #e1f1c0;
+    background-image: url(../image/message-success.png);
+    border-color: #b5d56d;
+    color: #62a426
+}
+
+.mws-form-message.warning {
+    background-color: #fef0b1;
+    background-image: url(../image/message-warning.png);
+    border-color: #ddca76;
+    color: #a98b15
+}
+
+.mws-form-message.info {
+    background-color: #bce5f7;
+    background-image: url(../image/message-info.png);
+    border-color: #a6d3e8;
+    color: #11689e
+}
+
+.mws-panel-body.no-padding .mws-form-message {
+    margin-bottom: 0;
+    border-width: 0 0 1px 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0
+}
+
+.mws-panel-body.no-padding .mws-form-message+.mws-form-message {
+    border-top: 0
+}

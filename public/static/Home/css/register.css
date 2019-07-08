@@ -46,9 +46,9 @@ input:focus{border: 2px solid orange;}
 
 
 /*用户注册*/
-.regist{width: 1000px;height: 550px;margin:20px auto;background:#fff;color:#000;border-radius: 6px;}
-.regist_center{width: 760px;margin: 10px auto;}
-.regist .regist_top{margin: 10px 0;}
+.regist{width: 1000px;height: 700px;margin:20px auto;background:#fff;color:#000;border-radius: 6px;}
+.regist_center{width: 760px;margin: 100px auto;}
+.regist .regist_top{margin: 10px 0px;padding-top: 30px;}
 .regist .regist_top .left{height: 40px;line-height: 40px;font-weight: bold;font-size: 20px;}
 .regist .regist_top .right{height: 40px;line-height: 40px;font-size: 13px;}
 .regist .regist_top .right a{color:#ff6700;font-weight: bold;}
@@ -58,6 +58,7 @@ input:focus{border: 2px solid orange;}
 .regist_main{padding:10px 0;padding-left:45px;}
 .regist_main .username{font:16px Times New Roman;height: 40px;line-height: 40px;margin:20px 0;}
 .regist_main .username .shurukuang{width: 220px;height: 30px;border:1px solid #ccc;padding:5px 10px; }
+.regist_main .username .radio{width: 22px;height: 22px;}
 .regist_main .username .yanzhengma{width: 100px;height: 30px;border:1px solid #ccc;padding:5px 10px; }
 .regist_main .username .shurukuang:focus{border: 1px solid blue;background: #F0FFFF;}
 .regist_main .username .yanzhengma:focus{border: 1px solid blue;background: #F0FFFF;}
@@ -73,3 +74,71 @@ input:focus{border: 2px solid orange;}
 footer{width: 100%;height: 80px;background:#fff;padding: 30px 0;}
 footer .copyright{height: 30px;line-height: 30px;font-size: 13px;word-spacing: 15px;text-align: center;}
 footer .copyright:first-of-type{margin-top: 10px;}
+
+.mws-form-message {
+
+	font-size: 12px;
+	cursor: pointer;
+	border: 1px solid #d2d2d2;
+	padding: 15px 8px 15px 45px;
+	position: relative;
+	vertical-align: middle;
+	background-color: #f8f8f8;
+	background-position: 12px 12px;
+	background-repeat: no-repeat;
+	margin-bottom: 12px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px
+}
+
+.mws-form-message p,.mws-form-message ul,.mws-form-message ol {
+	margin: 0
+}
+
+.mws-form-message ul li,.mws-form-message ol li {
+	list-style-position: inside;
+	list-style-type: inherit;
+	margin: 0
+}
+
+.mws-form-message.error {
+	
+	background-color: #ffcbca;
+	background-image: url(../image/message-error.png);
+	border-color: #eb979b;
+	color: #9b4449
+}
+
+.mws-form-message.success {
+	background-color: #e1f1c0;
+	background-image: url(../image/message-success.png);
+	border-color: #b5d56d;
+	color: #62a426
+}
+
+.mws-form-message.warning {
+	background-color: #fef0b1;
+	background-image: url(../image/message-warning.png);
+	border-color: #ddca76;
+	color: #a98b15
+}
+
+.mws-form-message.info {
+	background-color: #bce5f7;
+	background-image: url(../image/message-info.png);
+	border-color: #a6d3e8;
+	color: #11689e
+}
+
+.mws-panel-body.no-padding .mws-form-message {
+	margin-bottom: 0;
+	border-width: 0 0 1px 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0
+}
+
+.mws-panel-body.no-padding .mws-form-message+.mws-form-message {
+	border-top: 0
+}

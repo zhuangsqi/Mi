@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-use App\Http\Requests\HomeUserRequest;
+use Hash;
+use App\Http\Requests\HomeLoginRequest;
 class LoginController extends Controller
 {
     /**
@@ -34,23 +35,22 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HomeLoginRequest $request)
     {
-        $name = $request->username;
+        $name = $request->name;
         $password = $request->password;
 
         $info = DB::table('adminuser')->where('name','=',$name)->first();
         if($info){      
-            if($password == $info->password){
+            if(Hash::check($password,$info->password)){
                 session(['name'=>$name]);
                 return redirect('/');
             }else{
-                echo '登录失败';
+                return back()->with('error','账号或密码错误');
             }
         }else{
-            echo '账号或密码有误';
-        }
-        
+            return back()->with('error','账号或密码错误');
+        }        
     }
 
     /**

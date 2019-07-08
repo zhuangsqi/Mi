@@ -18,16 +18,27 @@
                 </div>
                 <div class="login_form ">
                     <form action="/login" method="POST" id="login-main-form"  align="center">    
-                        <input class="item_account mt20" type="text" name="username" id="username" placeholder="账号">
+                        <input class="item_account mt20" type="text" name="name" id="username" placeholder="账号">
                         <input class="item_account mt20" type="password" id="pwd" name="password" placeholder="密码">
                         <input class="btnadpt mt20" id="login-button" type="submit" value="登 录">
                         <div class="n_links_area mt20">
-                            <a class="outer-link" href="/user">立即注册</a>
+                            <a class="outer-link" href="/register">立即注册</a>
                             <span> |</span>
                             <a class="outer-link" href="">忘记密码？</a>
                         </div>
                         {{csrf_field()}}
                     </form>
+                    @if (count($errors) > 0)
+                    <div class="mws-form-message error mt20">
+                        <div class="alert alert-danger">
+                            <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    @endif
                 </div>
                 <div class="clear"></div>
             </div>

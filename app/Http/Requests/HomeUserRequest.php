@@ -26,7 +26,7 @@ class HomeUserRequest extends FormRequest
         return [
             //用户验证规则不能为空 多个规则用 | 隔开
             //unique 唯一规则 users 表名
-            'name'=>'required|regex:/\w{4,8}/|unique:adminuser',
+            'name'=>'required|regex:/\w{3,8}/|unique:adminuser',
             //密码规则
             'password'=>'required|regex:/\w{6,18}/',
             //重复密码规则
@@ -42,9 +42,9 @@ class HomeUserRequest extends FormRequest
     public function messages(){
         return [
             //自定义规则错误消息
-            'username.required'=>'用户名不能为空',
-            'username.regex'=>'用户名必须是4-8的任意的数字字母或者下划线',
-            'username.unique'=>'用户名不能重复',
+            'name.required'=>'用户名不能为空',
+            'name.regex'=>'用户名必须是3-8的任意的数字字母或者下划线',
+            'name.unique'=>'用户名不能重复',
 
             'password.required'=>'密码不能为空',
             'password.regex'=>'密码必须是6-18的任意的数字字母或者下划线',
@@ -55,11 +55,11 @@ class HomeUserRequest extends FormRequest
             
             'email.required'=>'邮箱不能为空',
             'email.email'=>'邮箱不符合规则',
-            'email.unique'=>'邮箱不能重复',
+            'email.unique'=>'这个邮箱已被注册',
             
-            'phone.required'=>'电话不能为空',
-            'phone.regex'=>'电话不符合规则',
-            'phone.unique'=>'电话不能重复',
+            'phone.required'=>'手机号不能为空',
+            'phone.regex'=>'请输入正确的手机号',
+            'phone.unique'=>'这个手机号已被注册',
         ];
     }
 }

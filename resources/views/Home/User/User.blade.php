@@ -1,6 +1,11 @@
 @extends('Home.HomePublic.public')
 @section('main')
 <!-- self_info -->
+<script>
+	$('.img',function(){
+		console.log($.session.get('upload'));
+	});
+</script>
 	<div class="grzxbj">
 		<div class="selfinfo center">
 		<div class="lfnav fl">
@@ -28,27 +33,24 @@
 			<div class="face fl ml40">
 				<div class="grzlbt">我的头像</div>
 				<div class="face_block mt20">
-					<span class="btn-upload">
-						<input class="input-text upload-url" type="text" name="face" id="face" readonly nullmsg="请添加附件！" style="width:200px">
-					  	<a style="z-index:2;" href="javascript:void();" class="btn btn-primary radius">
-					  	
-					  	<input type="file" multiple name="file_0" class="input-file">
-					  	</a>
+					<img class=".img" src="C:\fakepath\IMG_20150624_204515.jpg
+">
+				</div>
+				<div class="formControls col-xs-8 col-sm-9"> 
+					<span class="btn-upload form-group">
+						<input class="input-text upload-url" type="text" name="face" id="face" readonly nullmsg="请添加附件！" style="width:188px">
+						<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+						<input type="file" multiple name="face" class="input-file">
 					</span>
 				</div>
-				<!--<span class="input_sub" style="border:0;"><a href="">更换头像</a></span>
+				<!--<span class="input_sub" style="border:0;"><a href="">更换头像</a></span>-->
 
 	
-			<div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
-				<input class="input-text upload-url" type="text" name="face" id="face" readonly nullmsg="请添加附件！" style="width:200px">
-				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
-				<input type="file" multiple name="face" class="input-file">
-				</span>
-			</div>
+			
 
 
 
-				-->
+				
 				
 			</div>
 			<div class="fr">

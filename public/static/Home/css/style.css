@@ -255,12 +255,12 @@ footer{width: 100%;height: 120px;line-height: 30px;text-align: center;font-size:
 </span>
 	Explain：把文件选择域设为透明,通过绝对定位覆盖在长的好看的按钮上面。
 */
-.rtcont .btn-upload{position: relative; display:inline-block;height:31px; *display:inline;overflow:hidden;vertical-align:middle;cursor:pointer}
-.rtcont .upload-url{cursor: pointer; width:400px}
-.rtcont .input-file{position:absolute; right:0; top:0; cursor: pointer; z-index:1; font-size:30em;opacity:0;filter: alpha(opacity=0)}
-.rtcont .form-group .upload-btn{ margin-left:-1px}
-.rtcont .btn-upload .icon-add,.btn-upload .icon-minus{cursor: pointer;display: inline-block;font-family: Arial;font-size: 30px;height: 31px;line-height: 31px;text-align: center;vertical-align: middle;width: 36px}
+.btn-upload{position: relative; display:inline-block;height:40px; *display:inline;overflow:hidden;vertical-align:middle;cursor:pointer;}
+.upload-url{cursor: pointer; width:400px}
+.input-file{position:absolute; right:0; top:0; cursor: pointer; z-index:1; font-size:30em;opacity:0;filter: alpha(opacity=0)}
+.form-group .upload-btn{ margin-left:-1px}
+.btn-upload .icon-add,.btn-upload .icon-minus{cursor: pointer;display: inline-block;font-family: Arial;font-size: 30px;height: 31px;line-height: 31px;text-align: center;vertical-align: middle;width: 36px}
 @media (max-width: 767px) {
-	.rtcont .upload-btn{ display:none}
-	.rtcont .upload-url{ display:none}
+	.upload-btn{ display:none}
+	.upload-url{ display:none}
 }

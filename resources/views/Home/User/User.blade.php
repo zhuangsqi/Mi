@@ -16,7 +16,7 @@
 			<div class="ddzx">个人中心</div>
 			<div class="subddzx">
 				<ul>
-					<li><a href="./self_info.html" style="color:#ff6700;font-weight:bold;">我的个人中心</a></li>
+					<li><a href="/user" style="color:#ff6700;font-weight:bold;">我的个人中心</a></li>
 					<li><a href="">消息通知</a></li>
 					<li><a href="">优惠券</a></li>
 					<li><a href="">收货地址</a></li>
@@ -24,14 +24,49 @@
 			</div>
 		</div>
 		<div class="rtcont fr">
-			<div class="grzlbt ml40">我的资料</div>
-			<div class="subgrzl ml40"><span>昵称</span><span>啦啦维吉尔</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>手机号</span><span>15669097417</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>密码</span><span>************</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>个性签名</span><span>一支穿云箭，千军万马来相见！</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>我的爱好</span><span>游戏，音乐，旅游，健身</span><span><a href="">编辑</a></span></div>
-			<div class="subgrzl ml40"><span>收货地址</span><span>浙江省杭州市江干区19号大街571号</span><span><a href="">编辑</a></span></div>
-			
+		  <form action="/user/{{$data->id}}" method="post">
+			<div class="face fl ml40">
+				<div class="grzlbt">我的头像</div>
+				<div class="face_block mt20">
+					<span class="btn-upload">
+						<input class="input-text upload-url" type="text" name="face" id="face" readonly nullmsg="请添加附件！" style="width:200px">
+					  	<a style="z-index:2;" href="javascript:void();" class="btn btn-primary radius">
+					  	
+					  	<input type="file" multiple name="file_0" class="input-file">
+					  	</a>
+					</span>
+				</div>
+				<!--<span class="input_sub" style="border:0;"><a href="">更换头像</a></span>
+
+	
+			<div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
+				<input class="input-text upload-url" type="text" name="face" id="face" readonly nullmsg="请添加附件！" style="width:200px">
+				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+				<input type="file" multiple name="face" class="input-file">
+				</span>
+			</div>
+
+
+
+				-->
+				
+			</div>
+			<div class="fr">
+				<div class="grzlbt">我的资料</div>
+				<div class="subgrzl"><span>昵称</span><span><input type="text" class="input_text" name="name" value="{{$data->name}}"></span><span><a href="">编辑</a></span></div>
+				<div class="subgrzl"><span>性别</span><span><input type="text" class="input_text" name="sex" value="{{$data->sex}}"></span><span><a href="">编辑</a></span></div>
+				<div class="subgrzl"><span>手机号</span><span><input type="text" class="input_text" name="phone" value="{{$data->phone}}"></span><span><a href="">编辑</a></span></div>
+				<div class="subgrzl"><span>邮箱</span><span><input type="text" class="input_text" name="email" value="{{$data->email}}"></span><span><a href="">编辑</a></span></div>
+				<div class="subgrzl"><span>注册时间</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$data->updated_at}}</span><span><a href="">编辑</a></span></div>
+				{{method_field("PUT")}}
+				{{csrf_field()}}			
+			</div>
+			<div class="clear"></div>
+			<div class="sub_edit">
+				<input class="input_sub ml40" type="submit" value="确认修改">
+				<a href="/"><span class="input_sub ml40" style="padding:8px 60px;">返回首页</span></a>
+			</div>
+		  </form>
 		</div>
 		<div class="clear"></div>
 		</div>

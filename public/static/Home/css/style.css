@@ -222,12 +222,19 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .grzxbj .selfinfo .lfnav .subddzx ul li a:hover{color:rgb(51,51,51);}
 .grzxbj .selfinfo .rtcont{width: 978px;height: 500px;background: #fff;}
 .grzxbj .selfinfo .rtcont .ddzxbt{width: 938px;height: 60px;line-height: 60px;font-size: 22px;font-weight:bold;color:rgb(117,117,117);padding-left: 40px;border-bottom: 1px solid #ccc;}
-.grzxbj .selfinfo .rtcont .grzlbt{width:938px;height: 60px;line-height: 60px;font-size: 20px;color:rgb(117,117,117);}
-.grzxbj .selfinfo .rtcont .subgrzl{height: 45px;line-height: 45px;width: 900px;background: rgb(253,253,253);border:1px solid #aaa;margin-top: 10px;margin-bottom: 10px;border-radius: 3px;}
-.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(1){display: inline-block;font-size: 15px;font-weight: bold;color:rgb(117,117,117);width: 70px;height: 45px;line-height: 45px;padding-left: 20px;}
-.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(2){display: inline-block;font-size: 15px;color:rgb(117,117,117);width: 480px;height: 45px;line-height: 45px;padding-left: 120px;
+.grzxbj .selfinfo .rtcont .grzlbt{width:680px;height: 60px;line-height: 60px;font-size: 20px;color:rgb(117,117,117);}
+.grzxbj .selfinfo .rtcont .subgrzl{height: 45px;line-height: 45px;width: 630px;background: rgb(253,253,253);border:1px solid #aaa;margin-top: 10px;margin-bottom: 10px;border-radius: 3px;}
+.grzxbj .selfinfo .rtcont .subgrzl .input_text{height:41px;width:200px;padding-left:30px;color:rgb(117,117,117);border:0px solid #aaa;outline:none;}
+.grzxbj .selfinfo .rtcont .input_sub{width:200px; height:45px;margin-top:40px;color:rgb(117,117,117);font-size:20px;border:1px solid #aaa;border-radius: 3px;}
+.grzxbj .selfinfo .rtcont .input_sub:hover{color:#ff6700; }
+.grzxbj .selfinfo .rtcont .face{width:250px;height:355px;}
+.grzxbj .selfinfo .rtcont .face .face_block{width:220px;height:220px;border:1px #aaa solid;border-radius: 5px;}
+
+.grzxbj .selfinfo .rtcont .sub_edit{text-align: center;margin-top: 40px;width:900px;height:50px;}
+.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(1){display: inline-block;font-size: 15px;font-weight: bold;color:rgb(117,117,117);width: 60px;height: 45px;line-height: 45px;padding-left: 20px;}
+.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(2){display: inline-block;font-size: 15px;color:rgb(117,117,117);width: 240px;height: 45px;line-height: 45px;padding-left: 120px;
 }
-.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(3){display: inline-block;font-size: 15px;width: 160px;height: 45px;line-height: 45px;text-align: right;}
+.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(3){display: inline-block;font-size: 15px;width: 120px;height: 45px;line-height: 45px;text-align: right;}
 .grzxbj .selfinfo .rtcont .subgrzl span a{color:teal; }
 .grzxbj .selfinfo .rtcont .subgrzl span a:hover{color:#ff6700; }
 
@@ -240,3 +247,20 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 .grzxbj .selfinfo .rtcont .ddxq .ztxx ul li a:hover{color:#ff6700;}
 /*footer*/
 footer{width: 100%;height: 120px;line-height: 30px;text-align: center;font-size: 12px;background: rgb(250,250,250);padding:30px 0;}
+
+/*3.4.4 input-file 文件上传
+	Example:
+<span class="btn-upload">
+  <a style="z-index:2;" href="javascript:void();" class="btn btn-primary radius"><i class="iconfont">&#xf0020;</i> 浏览文件<input type="file" multiple name="file_0" class="input-file"></a>
+</span>
+	Explain：把文件选择域设为透明,通过绝对定位覆盖在长的好看的按钮上面。
+*/
+.rtcont .btn-upload{position: relative; display:inline-block;height:31px; *display:inline;overflow:hidden;vertical-align:middle;cursor:pointer}
+.rtcont .upload-url{cursor: pointer; width:400px}
+.rtcont .input-file{position:absolute; right:0; top:0; cursor: pointer; z-index:1; font-size:30em;opacity:0;filter: alpha(opacity=0)}
+.rtcont .form-group .upload-btn{ margin-left:-1px}
+.rtcont .btn-upload .icon-add,.btn-upload .icon-minus{cursor: pointer;display: inline-block;font-family: Arial;font-size: 30px;height: 31px;line-height: 31px;text-align: center;vertical-align: middle;width: 36px}
+@media (max-width: 767px) {
+	.rtcont .upload-btn{ display:none}
+	.rtcont .upload-url{ display:none}
+}

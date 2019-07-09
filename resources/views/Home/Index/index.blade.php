@@ -1,5 +1,6 @@
 @extends('Home.HomePublic.public')
 @section('main')
+
 	<!-- start banner_y -->
 		<div class="banner_y center">
 			<div class="nav">				

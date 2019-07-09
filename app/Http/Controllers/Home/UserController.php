@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\userss;
+use DB;
 class UserController extends Controller
 {
     /**
@@ -13,8 +14,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('Home.User.User');
+    {   
+        $name  = session('name');
+        $data = DB::table('adminuser')->where('name','=',$name)->first();
+        return view('Home.User.User',['data'=>$data]);
     }
 
     /**
@@ -57,7 +60,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('adminuser')->where('id','=',$id)->first();
+        return view('Home.User.edit',['data'=>$data]);
     }
 
     /**
@@ -69,7 +73,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
     }
 
     /**

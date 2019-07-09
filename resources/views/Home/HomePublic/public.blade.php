@@ -5,7 +5,8 @@
         <meta name="author" content="order by dede58.com"/>
 		<title>@yield("title")</title>
 		<link rel="stylesheet" type="text/css" href="/static/Home/css/style.css">
-		<script src="/static/Home/js/base.min.js"></script>
+    <script src="/static/Home/js/base.min.js"></script>
+		<script src="/static/Home/js/jquery-1.7.2.min.js"></script>
 		<link rel="stylesheet" href="/static/Home/css/base.min.css" /> 
   	<!--<link rel="stylesheet" href="/static/Home/css/index.min.css" />-->
 	</head>
@@ -54,9 +55,9 @@
     @else
       <div class="user_name"><a id="user_name" class="">{{session('name')}}</a>
         <div id="user_name_none" class="user_name_none">
-          <li><a href=" ">个人中心</a></li>
+          <li><a href="/user">个人中心</a></li>
           <li><a href=" ">我的订单</a></li>
-          <li><a href=" ">我的账号</a></li>
+          <li><a href=" ">修改密码</a></li>
           <li><a href="/uplogin">退出登录</a></li>
         </div>
       </div>
@@ -67,7 +68,7 @@
   <div class="site-header"> 
    <div class="container"> 
     <div class="header-logo"> 
-     <a href="./index.html" target="_blank"><div class="logo fl"></div></a>
+     <a href="/" target="_blank"><div class="logo fl"></div></a>
     </div> 
     <div class="header-nav"> 
      <ul class="nav-list J_navMainList clearfix"> 
@@ -180,4 +181,5 @@
       },300)
     }
   </script>
+ 
 </html>

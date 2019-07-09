@@ -44,7 +44,7 @@ class HomeUserRequest extends FormRequest
             //自定义规则错误消息
             'name.required'=>'用户名不能为空',
             'name.regex'=>'用户名必须是3-8的任意的数字字母或者下划线',
-            'name.unique'=>'用户名不能重复',
+            'name.unique'=>'此用户名已经注册',
 
             'password.required'=>'密码不能为空',
             'password.regex'=>'密码必须是6-18的任意的数字字母或者下划线',

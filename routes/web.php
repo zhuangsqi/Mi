@@ -11,10 +11,16 @@
 |
 */
 
+//登录和退出
+Route::resource("/adminlogin","Admin\AdminLoginController");
 //模板继承
 Route::resource("/admin","Admin\AdminController");
 //后台的会员模块
 Route::resource("/adminuser","Admin\UserController");
+//后台无限分类模块
+Route::resource("/admincates","Admin\catesController");
+//后台管理员模块
+Route::resource("/adminusers","Admin\AdminuserController");
 
 
 
@@ -26,9 +32,14 @@ Route::resource('/','Home\Indexcontroller');
 Route::resource('/register','Home\RegisterController');
 //登录
 Route::resource('/login','Home\LoginController');
-
-//个人中心
-Route::resource('/user','Home\Usercontroller');
-
 //前台退出登录
 Route::get('/uplogin','Home\Indexcontroller@uplogin');
+Route::group(['middleware'=>'homelogin'],function(){
+	//个人中心
+	Route::resource('/user','Home\Usercontroller');
+});
+
+
+
+
+

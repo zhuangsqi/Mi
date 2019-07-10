@@ -74,7 +74,7 @@ class RegisterController extends Controller
             //执行数据修改
             $data['status']=1;
             if(Users::where('id','=',$id)->update($data)){
-                return redirect('login')->with('success','账号激活成功,请登录!');
+                return redirect('/login')->with('success','账号激活成功,请登录!');
             }
         }
     }

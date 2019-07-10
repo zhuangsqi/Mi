@@ -39,13 +39,9 @@
                         </div>
                     </div>
                     @endif
-                    @if (count($successs) > 0)
-                    <div class="mws-form-message success mt20">
-                        <div class="alert alert-danger">
-                            <ul>
-                                <li>{{ $successs }}</li>
-                            </ul>
-                        </div>
+                    @if(session('success'))
+                    <div class="mws-form-message success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{session('success')}}
                     </div>
                     @endif
                 </div>

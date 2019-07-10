@@ -40,7 +40,7 @@
      <a rel="nofollow" href="" data-toggle="modal">Select Region</a> 
     </div> 
     <div class="topbar-cart" id="J_miniCartTrigger"> 
-     <a rel="nofollow" class="cart-mini" id="J_miniCartBtn" href="//static.mi.com/cart/"><i class="iconfont"></i>购物车<span class="cart-mini-num J_cartNum"></span></a> 
+     <a rel="nofollow" class="cart-mini" id="J_miniCartBtn" href="/cart"><i class="iconfont"></i>购物车<span class="cart-mini-num J_cartNum"></span></a> 
      <div class="cart-menu" id="J_miniCartMenu"> 
       <div class="loading">
        <div class="loader"></div>

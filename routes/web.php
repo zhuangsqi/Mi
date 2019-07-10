@@ -33,6 +33,9 @@ Route::get('/uplogin','Home\Indexcontroller@uplogin');
 Route::group(['middleware'=>'homelogin'],function(){
 	//个人中心
 	Route::resource('/user','Home\Usercontroller');
+	//购物车
+	ROute::resource('/cart','Home\CartController');
+
 });
 
 
@@ -41,20 +44,5 @@ Route::group(['middleware'=>'homelogin'],function(){
 
 
 
-Route::group(['middleware'=>"login"],function(){
-
-		//模板继承
-	Route::resource("/admin","Admin\AdminController");
-	//后台的会员模块
-	Route::resource("/adminuser","Admin\UserController");
-
-	//后台无线分类模块
-	Route::resource("/admincates","Admin\catesController");
-	//后台管理员模块
-	Route::resource("/adminusers","Admin\AdminuserController");
-	Route::get("/adminss",function(){
-		echo "111111111";
-	});
-});
 
 

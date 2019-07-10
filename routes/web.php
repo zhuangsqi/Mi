@@ -13,14 +13,7 @@
 
 //登录和退出
 Route::resource("/adminlogin","Admin\AdminLoginController");
-//模板继承
-Route::resource("/admin","Admin\AdminController");
-//后台的会员模块
-Route::resource("/adminuser","Admin\UserController");
-//后台无限分类模块
-Route::resource("/admincates","Admin\catesController");
-//后台管理员模块
-Route::resource("/adminusers","Admin\AdminuserController");
+
 
 
 
@@ -30,6 +23,9 @@ Route::resource("/adminusers","Admin\AdminuserController");
 Route::resource('/','Home\Indexcontroller');
 //注册
 Route::resource('/register','Home\RegisterController');
+//激活账号邮件
+Route::get('/jihuo','Home\RegisterController@jihuo');
+
 //登录
 Route::resource('/login','Home\LoginController');
 //前台退出登录
@@ -41,5 +37,24 @@ Route::group(['middleware'=>'homelogin'],function(){
 
 
 
+
+
+
+
+Route::group(['middleware'=>"login"],function(){
+
+		//模板继承
+	Route::resource("/admin","Admin\AdminController");
+	//后台的会员模块
+	Route::resource("/adminuser","Admin\UserController");
+
+	//后台无线分类模块
+	Route::resource("/admincates","Admin\catesController");
+	//后台管理员模块
+	Route::resource("/adminusers","Admin\AdminuserController");
+	Route::get("/adminss",function(){
+		echo "111111111";
+	});
+});
 
 

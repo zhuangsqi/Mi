@@ -51,7 +51,7 @@
     @if(session()->has('name') == null)
      <a rel="nofollow" class="link" href="/login" data-agreement="true" data-login="true">登录</a>
      <span class="sep">|</span>
-     <a rel="nofollow" class="link" href="/create" data-agreement="true" data-register="true">注册</a>
+     <a rel="nofollow" class="link" href="/register/create" data-agreement="true" data-register="true">注册</a>
     @else
       <div class="user_name"><a id="user_name" class="">{{session('name')}}</a>
         <div id="user_name_none" class="user_name_none">

@@ -4915,8 +4915,6 @@ $(function() {
 	/*上传*/
 	$(document).on("change", ".input-file",function() {
 		var uploadVal = $(this).val();
-		$.session.set('upload',uploadVal);
-		
 		$(this).parent().find(".upload-url").val(uploadVal).focus().blur();
 	});
 });
@@ -9295,7 +9293,7 @@ $(function() {
 });
 
 
-
+/*
 
 (function($){
 
@@ -9429,3 +9427,4 @@ return this;
 $.session._init();
 
 })(jQuery);
+*/

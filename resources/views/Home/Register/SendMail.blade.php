@@ -1,0 +1,1 @@
+<a href="http://www.imi.com/jihuo?id={{$id}}&token={{$token}}">点击激活用户</a>

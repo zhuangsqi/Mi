@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="/static/Home/css/register.css">
 	</head>
 	<body>
-		<form  method="post" action="/">
+		<form  method="post" action="/register">
 		<div class="regist">
 			<div class="regist_center">
 				<div class="regist_top">

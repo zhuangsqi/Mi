@@ -60,8 +60,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('adminuser')->where('id','=',$id)->first();
-        return view('Home.User.edit',['data'=>$data]);
+       
     }
 
     /**
@@ -73,7 +72,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        $data = $request->except(['_token','_method','pic']);
+         //检测是否具有文件上传
+        if($request->hasFile("pic")){
+            //随机名字
+            $name=time();
+            //获取上传图片的后缀
+            $ext=$request->file("pic")->getClientOriginalExtension();
+            //直接把上传的图片保存在目录下
+            $request->file("pic")->move("./upload",$name.".".$ext);
+            $data['face']=$name.'.'.$ext;
+        }
+        
+        
+        if(DB::table('adminuser')->where('id','=',$id)->update($data)){
+            return redirect('/user');
+        }else{
+            return back();
+        }
     }
 
     /**

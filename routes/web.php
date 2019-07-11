@@ -21,12 +21,14 @@ Route::resource("/adminlogin","Admin\AdminLoginController");
 
 //前台继承
 Route::resource('/','Home\Indexcontroller');
-//注册
+//邮箱注册
 Route::resource('/register','Home\RegisterController');
 //注册校验码
 Route::get('/registercode','Home\LoginController@code');
-//激活账号邮件
+//邮箱注册激活
 Route::get('/jihuo','Home\RegisterController@jihuo');
+//手机注册
+Route::resource('/registerphone','Home\PhoneRegisterController');
 
 //登录
 Route::resource('/login','Home\LoginController');

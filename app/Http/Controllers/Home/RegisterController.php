@@ -4,11 +4,18 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+//邮箱注册
 use Mail;
+//加密
 use Hash;
+//模型
 use App\Models\Users;
+//表单检验
 use App\Http\Requests\HomeMailRequest;
-use Gregwar\Captcha\CaptchaBuilder; 
+//校验码
+use Gregwar\Captcha\CaptchaBuilder;
+//短信引入
+use Qcloud\Sms\SmsSenderUtil; 
 class RegisterController extends Controller
 {
     /**

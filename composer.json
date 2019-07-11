@@ -10,7 +10,8 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "twbs/bootstrap": "^4.3",
-        "gregwar/captcha": "1.*"
+        "gregwar/captcha": "1.*",
+        "qcloudsms/qcloudsms_php": "0.1.*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

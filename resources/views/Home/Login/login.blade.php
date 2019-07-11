@@ -20,6 +20,11 @@
                     <form action="/login" method="POST" id="login-main-form"  align="center">    
                         <input class="item_account mt20" type="text" name="name" id="username" placeholder="账号">
                         <input class="item_account mt20" type="password" id="pwd" name="password" placeholder="密码">
+                        {{session('error')}}
+                        <div class="item_account_code mt20">
+                            <input class="item_code" type="text" name="code" placeholder="检验码">
+                            <img src="/code" onclick="this.src=this.src+'?a=1'" style="float:right">
+                        </div>
                         <input class="btnadpt mt20" id="login-button" type="submit" value="登 录">
                         <div class="n_links_area mt20">
                             <a class="outer-link" href="/register">立即注册</a>

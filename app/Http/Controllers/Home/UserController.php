@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\userss;
+use App\Models\users;
 use DB;
 class UserController extends Controller
 {
@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {   
         $name  = session('name');
-        $data = DB::table('adminuser')->where('name','=',$name)->first();
+        $data = Users::where('name','=',$name)->first();
         return view('Home.User.User',['data'=>$data]);
     }
 
@@ -83,9 +83,19 @@ class UserController extends Controller
             $request->file("pic")->move("./upload",$name.".".$ext);
             $data['face']=$name.'.'.$ext;
         }
-        
-        
-        if(DB::table('adminuser')->where('id','=',$id)->update($data)){
+        if($data['sex']=='女'){
+            $data['sex']=0;
+        }
+        if($data['sex']=='男'){
+            $data['sex']=1;
+        }
+        if($data['sex']=='保密'){
+            $data['sex']=2;
+        }
+        if($data['sex']==0 && 1 && 2){
+            return back()->with('error','请输入:女/男/保密');
+        }
+        if(Users::where('id','=',$id)->update($data)){
             return redirect('/user');
         }else{
             return back();

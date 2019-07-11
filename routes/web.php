@@ -28,6 +28,8 @@ Route::get('/jihuo','Home\RegisterController@jihuo');
 
 //登录
 Route::resource('/login','Home\LoginController');
+//校验码
+Route::get('/code','Home\LoginController@code');
 //前台退出登录
 Route::get('/uplogin','Home\Indexcontroller@uplogin');
 Route::group(['middleware'=>'homelogin'],function(){

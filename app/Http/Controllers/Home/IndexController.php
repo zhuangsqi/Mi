@@ -8,7 +8,6 @@ use Hash;
 use DB;
 use Mail;
 use App\Models\Users;
-use App\Http\Requests\HomeUserRequest;
 class IndexController extends Controller
 {
     /**

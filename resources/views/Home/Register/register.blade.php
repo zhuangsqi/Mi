@@ -28,15 +28,7 @@
 			          </div>
 			        </div>
 			      	@endif
-					<div class="username">用&nbsp;&nbsp;户&nbsp;&nbsp;名:&nbsp;&nbsp;
-						<input class="shurukuang" type="text" name="name" placeholder="请输入你的用户名"/>
-						<span>请不要输入汉字</span>
-					</div>
-					<div class="username">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:&nbsp;&nbsp;&nbsp;&nbsp;
-						<input class="radio" type="radio" name="sex" value="1" />男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input class="radio" type="radio" name="sex" value="0" />女&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input class="radio" type="radio" name="sex" value="2" />保密
-					</div>
+					
 					<div class="username">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;
 						<input class="shurukuang" type="password" name="password" placeholder="请输入你的密码"/>
 						<span>请输入6位以上字符</span>
@@ -46,10 +38,10 @@
 						<input class="shurukuang" type="password" name="repassword" placeholder="请确认你的密码"/>
 						<span>两次密码要输入一致哦</span>
 					</div>
-					<div class="username">手&nbsp;&nbsp;机&nbsp;&nbsp;号:&nbsp;&nbsp;
+					<!--<div class="username">手&nbsp;&nbsp;机&nbsp;&nbsp;号:&nbsp;&nbsp;
 						<input class="shurukuang" type="text" name="phone" placeholder="请填写正确的手机号"/>
 						<span>填写下手机号吧，方便我们联系您！</span>
-					</div>
+					</div>-->
 					<div class="username">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:&nbsp;&nbsp;
 						<input class="shurukuang" type="email" name="email" placeholder="请填写正确的电子邮箱"/>
 						<span>填写下电子邮箱，电子发票将发送您的邮箱！</span>

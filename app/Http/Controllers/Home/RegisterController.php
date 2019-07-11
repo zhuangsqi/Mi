@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Mail;
 use Hash;
 use App\Models\Users;
-use App\Http\Requests\HomeUserRequest;
+use App\Http\Requests\HomeMailRequest;
 class RegisterController extends Controller
 {
     /**
@@ -46,7 +46,7 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(HomeUserRequest $request)
+    public function store(HomeMailRequest $request)
     {
         $data = $request->except(['repassword','_token']);
         $data['status']=0;

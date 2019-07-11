@@ -19,8 +19,11 @@ class AdminLoginController extends Controller
     public function index(Request $request)
     {
         //退出
+        
         //销毁session
         $request->session()->pull("adminname");
+        //删除权限
+        $request->session()->pull("nodelist");
         //跳转登录界面
         return redirect("/adminlogin/create");
     }

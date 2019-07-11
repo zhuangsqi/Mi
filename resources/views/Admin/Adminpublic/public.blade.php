@@ -24,8 +24,6 @@
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <title>@yield("title")</title>
-<meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
-<meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
 <body>
 <header class="navbar-wrapper">
@@ -50,8 +48,8 @@
 				<li class="dropDown dropDown_hover">
 					<a href="#" class="dropDown_A">{{session('adminname')}}<i class="Hui-iconfont">&#xe6d5;</i></a>
 					<ul class="dropDown-menu menu radius box-shadow">
-						<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-						<li><a href="#">切换账户</a></li>
+						<li><a href="/adminusers/show" onClick="myselfinfo()">修改密码</a></li>
+						<li><a href="/adminlogin">切换账户</a></li>
 						<li><a href="/adminlogin">退出</a></li>
 				</ul>
 			</li>
@@ -91,6 +89,10 @@
 					<ul>
 						<li><a data-href="member-list.html" data-title="图片管理" href="/adminusers/create">添加管理员</a></li>
 						<li><a data-href="member-del.html" data-title="图片管理"  href="/adminusers">管理员列表</a></li>
+						<li><a data-href="member-del.html" data-title="图片管理"  href="/adminroles/create">角色添加</a></li>
+						<li><a data-href="member-del.html" data-title="图片管理"  href="/adminroles">角色列表</a></li>
+						<li><a data-href="member-del.html" data-title="图片管理"  href="/auth/create">权限添加</a></li>
+						<li><a data-href="member-del.html" data-title="图片管理"  href="/auth">权限列表</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -104,13 +106,36 @@
 			</ul>
 		</dd>
 	</dl>
+	<dl id="menu-product">
+			<dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="product-brand.html" data-title="品牌管理" href="/adminproduct/create">添加品牌</a></li>
+					<li><a data-href="product-brand.html" data-title="品牌管理" href="/adminproduct">管理品牌</a></li>
+				</ul>
+			</dd>
+		</dl>
+	
 </div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
 <section class="Hui-article-box">
-@section("main")
-@show
-</section>
+                    @if(session('success'))
+                   		 <div class="Huialert Huialert-success"><i class="Hui-iconfont">&#xe6a6;</i>
+                        {{session('success')}}
+                   		</div>
+                    @endif
+                    @if(session("error"))
+                   <div class="Huialert Huialert-danger"><i class="Hui-iconfont">&#xe6a6;</i>			
+                        {{session("error")}}
+                    </div>
+                    @endif
+                    
+                    @section("main")
+                    @show
+
+</section> 
+
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/static/Admins/lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="/static/Admins/lib/layer/2.4/layer.js"></script>
@@ -122,7 +147,7 @@
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">
 // $('.table-sort').dataTable({
-// 	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+// 	"aaSorting": [[ 1, "asc" ]],//默认第几个排序
 // 	"bStateSave": true,//状态保存
 // 	"aoColumnDefs": [
 // 	  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
@@ -130,6 +155,14 @@
 // 	]
 // });
 
+$('.table-sort').dataTable({
+	"aaSorting": [[ 1, "asc" ]],//默认第几个排序
+	"bStateSave": true,//状态保存
+	
+	lengthMenu: [1,5,10]//每页可显示条目选择列表
+
+
+});
 
 
 </script> 

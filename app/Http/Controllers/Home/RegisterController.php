@@ -8,6 +8,7 @@ use Mail;
 use Hash;
 use App\Models\Users;
 use App\Http\Requests\HomeMailRequest;
+use Gregwar\Captcha\CaptchaBuilder; 
 class RegisterController extends Controller
 {
     /**
@@ -20,9 +21,7 @@ class RegisterController extends Controller
         return view('Home.Register.register');
     }
 
-    public function send(){
-        echo '发送邮件';
-    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -31,6 +30,24 @@ class RegisterController extends Controller
     public function create()
     {
         return view('Home.Register.register');
+    }
+
+    public function code(){
+        // 生成校验码代码    
+        ob_clean();//清除操作
+        //实例化检验码        
+        $builder = new CaptchaBuilder;       
+        //可以设置图片宽高及字体       
+        $builder->build($width = 100, $height = 47, $font = null);        
+        //获取验证码的内容        
+        $phrase = $builder->getPhrase();        
+        //把内容存入session 用于对比输入的校验码
+        session(['vcode'=>$phrase]);        
+        //生成图片        
+        header("Cache-Control: no-cache, must-revalidate");        
+        header('Content-Type: image/jpeg');        
+        $builder->output();        
+        //die;
     }
 
     public function sendMail($email,$id,$token){
@@ -48,9 +65,15 @@ class RegisterController extends Controller
      */
     public function store(HomeMailRequest $request)
     {
+        $code = $request->input('code');
+        $vcode = session('vcode');
+        if(!$code==$vcode){
+            return back()->with('error','检验码不正确,请重新输入');
+        }
         $data = $request->except(['repassword','_token']);
         $data['status']=0;
         $data['face']=0;
+        $data['name']='pt'.rand(1,10000);
         $data['password']=Hash::make($data['password']);
         $data['token']=str_random(50);
         $user=Users::create($data);

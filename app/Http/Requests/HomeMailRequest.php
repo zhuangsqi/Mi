@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HomeUserRequest extends FormRequest
+class HomeMailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class HomeUserRequest extends FormRequest
     public function rules()
     {
         return [
-            //用户验证规则不能为空 多个规则用 | 隔开
+             //用户验证规则不能为空 多个规则用 | 隔开
             //密码规则
             'password'=>'required|regex:/\w{6,18}/',
             //重复密码规则
@@ -35,7 +35,6 @@ class HomeUserRequest extends FormRequest
             //'phone'=>'required|regex:/\d{11}/|unique:adminuser',
         ];
     }
-
     //自定义错误消息
     public function messages(){
         return [

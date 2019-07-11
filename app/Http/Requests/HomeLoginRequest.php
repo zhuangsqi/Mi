@@ -24,7 +24,7 @@ class HomeLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|exists:adminuser',
+            'email'=>'required|email|exists:adminuser',
             //密码规则
             'password'=>'required',
         ];
@@ -34,8 +34,8 @@ class HomeLoginRequest extends FormRequest
     public function messages(){
         return [
             //自定义规则错误消息
-            'name.required'=>'用户名不能为空',
-            'name.exists'=>'用户名或密码不正确!',
+            'email.required'=>'账号不能为空',
+            'email.exists'=>'账号或密码不正确!',
             'password.required'=>'密码不能为空',
             
         ];

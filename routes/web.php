@@ -23,12 +23,14 @@ Route::resource("/adminlogin","Admin\AdminLoginController");
 Route::resource('/','Home\Indexcontroller');
 //注册
 Route::resource('/register','Home\RegisterController');
+//注册校验码
+Route::get('/registercode','Home\LoginController@code');
 //激活账号邮件
 Route::get('/jihuo','Home\RegisterController@jihuo');
 
 //登录
 Route::resource('/login','Home\LoginController');
-//校验码
+//登录校验码
 Route::get('/code','Home\LoginController@code');
 //前台退出登录
 Route::get('/uplogin','Home\Indexcontroller@uplogin');

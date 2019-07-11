@@ -61,13 +61,13 @@ class LoginController extends Controller
         if(!$code == $vcode){
             return back()->with('error','检验码错误');
         }
-        $name = $request->name;
+        $email = $request->email;
         $password = $request->password;
 
-        $info = DB::table('adminuser')->where('name','=',$name)->first();
+        $info = DB::table('adminuser')->where('email','=',$email)->first();
         if($info){      
             if(Hash::check($password,$info->password)){
-                session(['name'=>$name]);
+                session(['name'=>$info->name]);
                 return redirect('/');
             }else{
                 return back()->with('error','账号或密码错误');

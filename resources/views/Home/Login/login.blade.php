@@ -18,7 +18,7 @@
                 </div>
                 <div class="login_form ">
                     <form action="/login" method="POST" id="login-main-form"  align="center">    
-                        <input class="item_account mt20" type="text" name="name" id="username" placeholder="账号">
+                        <input class="item_account mt20" type="text" name="email" id="username" placeholder="账号">
                         <input class="item_account mt20" type="password" id="pwd" name="password" placeholder="密码">
                         {{session('error')}}
                         <div class="item_account_code mt20">

@@ -59,10 +59,12 @@ input:focus{border: 2px solid orange;}
 .regist_main .username{font:16px Times New Roman;height: 40px;line-height: 40px;margin:20px 0;}
 .regist_main .username .shurukuang{width: 220px;height: 30px;border:1px solid #ccc;padding:5px 10px; }
 .regist_main .username .radio{width: 22px;height: 22px;}
-.regist_main .username .yanzhengma{width: 100px;height: 30px;border:1px solid #ccc;padding:5px 10px; }
+.regist_main .username .yanzhengma{width: 110px;height: 30px;border:1px solid #ccc;padding:5px 10px; }
 .regist_main .username .shurukuang:focus{border: 1px solid blue;background: #F0FFFF;}
 .regist_main .username .yanzhengma:focus{border: 1px solid blue;background: #F0FFFF;}
-.regist_main .username .right{margin-left: 20px;}
+.regist_main .username .right{margin-left: 10px;border:1px #ccc solid;padding:0px 9px;width:80px;}
+.regist_main .username .right a{color:#ff6700;}
+.regist_main .username .right a:hover{color:#ccc;}
 
 .regist_main .username span{display:inline-block;margin-left:20px;font-size: 12px;color: #ccc;font-weight: bold;}
 .regist_main .username span:hover{color: #ff6700;}

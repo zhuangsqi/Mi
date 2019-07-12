@@ -21,7 +21,7 @@ $appid = 1400231589; // 1400开头
 $appkey = "efd946dc7c589652a212d7530208c359";
 
 // 需要发送短信的手机号码
-$phoneNumbers = ["21212313123", "12345678902", "12345678903"];
+$phoneNumbers = ["19920140051"];
 
 // 短信模板ID，需要在短信应用中申请
 $templateId = 371369;  // NOTE: 这里的模板ID`7839`只是一个示例，真实的模板ID需要在短信控制台中申请
@@ -29,7 +29,19 @@ $templateId = 371369;  // NOTE: 这里的模板ID`7839`只是一个示例，真�
 // 签名
 $smsSign = "一根头发"; // NOTE: 这里的签名只是示例，请使用真实的已申请的签名，签名参数使用的是`签名内容`，而不是`签名ID`
 
-
+  /**
+     * 普通单发
+     *
+     * 普通单发需明确指定内容，如果有多个签名，请在内容中以【】的方式添加到信息内容中，否则系统将使用默认签名。
+     *
+     * @param int    $type        短信类型，0 为普通短信，1 营销短信
+     * @param string $nationCode  国家码，如 86 为中国
+     * @param string $phoneNumber 不带国家码的手机号
+     * @param string $msg         信息内容，必须与申请的模板格式一致，否则将返回错误
+     * @param string $extend      扩展码，可填空串
+     * @param string $ext         服务端原样返回的参数，可填空串
+     * @return string 应答json字符串，详细内容参见腾讯云协议文档
+     */
 // 单发短信
 try {
     $ssender = new SmsSingleSender($appid, $appkey);

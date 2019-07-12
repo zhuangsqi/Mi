@@ -5,7 +5,17 @@
         <meta name="author" content="order by dede58.com"/>
 		<title>用户注册</title>
 		<link rel="stylesheet" type="text/css" href="/static/Home/css/register.css">
-		<script src="/static/Home/js/jquery-1.7.2.min.js"></script>
+		<script src="/static/Home/js/jquery.min.js"></script>
+		<script src="/static/Home/js/amazeui.min.js"></script>
+		<style type="text/css">
+	    .cur{
+	      border:1px solid red;
+	    }
+
+	    .curs{
+	      border:1px solid green;
+	    }
+  </style>
 	</head>
 	<body>
 		<div class="regist">
@@ -20,9 +30,10 @@
 					<div class="regist_fs fl"><a id="mail">邮箱注册</a></div>
 					<div class="regist_shu fl" style="font-size: 35px;margin-top:20px;">|</div>
 					<div class="regist_fs fl"><a id="phone">手机注册</a></div>
+					<div class="clear"></div>
 				</div>
 
-				<div id="mails"  style="display:block;">
+				<div id="remail"  style="display:none;">
 					<form  method="post" action="/register">
 					<div class="regist_main center">
 						@if(count($errors)>0)
@@ -54,11 +65,6 @@
 							<input class="shurukuang" type="text" name="code" placeholder="请输入检验码"/>
 							<img src="/code" onclick="this.src=this.src+'?a=1'" style="float:right;margin-right: 70px;">
 						</div>
-						<!--<div class="username">手&nbsp;&nbsp;机&nbsp;&nbsp;号:&nbsp;&nbsp;
-							<input class="shurukuang" type="text" name="phone" placeholder="请填写正确的手机号"/>
-							<span>填写下手机号吧，方便我们联系您！</span>
-						</div>-->
-						
 					</div>
 					<div class="regist_submit">
 						<input class="submit" type="submit" value="立即注册" >
@@ -67,7 +73,7 @@
 					</form>
 				</div>
 
-				<div id="phones"  style="display:none;">
+				<div id="rephone"  style="display:block;">
 					<form  method="post" action="/registerphone">
 					<div class="regist_main center">
 						@if(count($errors)>0)
@@ -82,12 +88,16 @@
 				        </div>
 				      	@endif
 						<div class="username">手&nbsp;&nbsp;机&nbsp;&nbsp;号:&nbsp;&nbsp;
-							<input class="shurukuang" type="text" name="phone" placeholder="请填写正确的手机号"/>
+							<input class="shurukuang" type="tel" name="phone" class="jiaodian" placeholder="请填写正确的手机号" reminder="请输入正确的手机号"/>
 							<span>发送验证码激活账号！</span>
 						</div>
-						<div class="username">验&nbsp;&nbsp;证&nbsp;&nbsp;码:&nbsp;&nbsp;
-							<input class="shurukuang" type="text" name="phone" placeholder="请填写正确的手机号"/>
+						<div class="username">
+							<div class="left fl">验&nbsp;&nbsp;证&nbsp;&nbsp;码:&nbsp;&nbsp;
+								<input class="yanzhengma jiaodian" type="text" name="code" placeholder="请输入验证码"/>
+							</div>
+							<div class="right fl"><a id="huoqu" href="javascript:void(0)">获取验证码</a></div>
 							<span>60秒内输入！</span>
+							<div class="clear"></div>
 						</div>
 						<div class="username">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;
 							<input class="shurukuang" type="password" name="password" placeholder="请输入你的密码"/>
@@ -114,12 +124,52 @@
 	<script>
 		
 		$('#phone').click(function(){
-            $('#mails').hide();
-            $('#phones').show();
+            $('#remail').hide();
+            $('#rephone').show();
 	    })
 	    $('#mail').click(function(){
-	            $('#phones').hide();
-	            $('#mails').show();
+	            $('#rephone').hide();
+	            $('#remail').show();
 	    })
+	    //获取焦点
+	    PHONES=false;
+	    CODE=false;
+	    $('.jiaodian').focus(function(){
+	    	reminder=$(this).attr('reminder');
+	    	$(this).next('span').css('color','red').html(reminder);
+	    	$(this).addClass('cur');
+	    });
+
+	    //手机号检验
+	    $("input[name='phone']").blur(function(){
+	    	phone=$(this).val();
+	    	ob=$(this);
+	    	p=ob.val();
+
+	    	//检测手机号是否符合规则
+	    	if(phone.match(/^\d{11}$/)==null){
+	    		$(this).next('span').css('color','red').html('手机号不合法');
+	    		$(this).addClass("cur");
+	    		PHONES=false;
+	    	}else{
+	    		//Ajax判断手机是否被注册
+	    		$.get("/checkphone",{p:p},function(data){
+	    			alert(data);
+	    			if(data==1){
+	    				ob.next('span').css('color','red').html('手机号已被注册');
+	    				ob.addClass("cur");
+	    				//把获取验证码的按钮禁用
+	    				$('#huoqu').attr('disabled',true);
+	    				PHONES=false;
+	    			}else{
+	    				ob.next('span').css('color','green').html('手机号可用');
+	    				ob.addClass('curs');
+	    				//获取验证码的按钮激活
+	    				$('#huoqu').attr('disabled',false);
+	    				PHONES=true;
+	    			}
+	    		});
+	    	}
+	    });
 	</script>
 </html>

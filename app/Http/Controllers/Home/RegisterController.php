@@ -152,4 +152,23 @@ class RegisterController extends Controller
     {
         //
     }
+
+    public function checkphone(Request $request){
+        //获取手机号
+        $p=$request->input('p');
+        //获取用户表的phone字段
+        $data=Users::pluck('phone');
+        //获取的数据转换为一维数组
+        $pp=array();
+        foreach($data as $key=>$value){
+            $pp[$key]=$value;
+        }
+        //判断手机号是否存在数据中
+        if(in_array($p,$pp)){
+            echo 1;//手机号已经注册
+        }else{
+            echo 0;//手机号可用
+        }
+
+    }
 }

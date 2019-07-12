@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="/static/Home/css/Login.css">
+    <script src="/static/Home/js/jquery-1.7.2.min.js"></script>
     <title>小米商城</title>
 </head>
 <body>
@@ -14,25 +15,47 @@
         <div class="layout">
             <div class="login fr">
                 <div id="nav-tabs" class="nav_tabs mt20">
-                    <a class="navtab-link now" data-tab="pwd">帐号登录</a>  
+                    <a class="navtab-link now" data-tab="pwd" id="mail">邮箱登录</a>
+                    <a class="navtab-link now" data-tab="pwd">&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                    <a class="navtab-link now" data-tab="pwd" id="phone">手机登录</a>  
                 </div>
                 <div class="login_form ">
-                    <form action="/login" method="POST" id="login-main-form"  align="center">    
-                        <input class="item_account mt20" type="text" name="email" id="username" placeholder="账号">
-                        <input class="item_account mt20" type="password" id="pwd" name="password" placeholder="密码">
-                        {{session('error')}}
-                        <div class="item_account_code mt20">
-                            <input class="item_code" type="text" name="code" placeholder="检验码">
-                            <img src="/code" onclick="this.src=this.src+'?a=1'" style="float:right">
-                        </div>
-                        <input class="btnadpt mt20" id="login-button" type="submit" value="登 录">
-                        <div class="n_links_area mt20">
-                            <a class="outer-link" href="/register">立即注册</a>
-                            <span> |</span>
-                            <a class="outer-link" href="">忘记密码？</a>
-                        </div>
-                        {{csrf_field()}}
-                    </form>
+                    <div id="mails" style="display: block;">
+                        <form action="/login" method="POST" id="login-main-form"  align="center">    
+                            <input class="item_account mt20" type="text" name="email" id="username" placeholder="邮箱@">
+                            <input class="item_account mt20" type="password" id="pwd" name="password" placeholder="密码">
+                            {{session('error')}}
+                            <div class="item_account_code mt20">
+                                <input class="item_code" type="text" name="code" placeholder="检验码">
+                                <img src="/code" onclick="this.src=this.src+'?a=1'" style="float:right">
+                            </div>
+                            <input class="btnadpt mt20" id="login-button" type="submit" value="登 录">
+                            <div class="n_links_area mt20">
+                                <a class="outer-link" href="/register">立即注册</a>
+                                <span> |</span>
+                                <a class="outer-link" href="">忘记密码？</a>
+                            </div>
+                            {{csrf_field()}}
+                        </form>
+                    </div>
+                    <div id="phones" style="display: none;">
+                        <form action="/login" method="POST" id="login-main-form"  align="center">    
+                            <input class="item_account mt20" type="text" name="phone" id="username" placeholder="手机号">
+                            <input class="item_account mt20" type="password" id="pwd" name="password" placeholder="密码">
+                            {{session('error')}}
+                            <div class="item_account_code mt20">
+                                <input class="item_code" type="text" name="code" placeholder="检验码">
+                                <img src="/code" onclick="this.src=this.src+'?a=1'" style="float:right">
+                            </div>
+                            <input class="btnadpt mt20" id="login-button" type="submit" value="登 录">
+                            <div class="n_links_area mt20">
+                                <a class="outer-link" href="/register">立即注册</a>
+                                <span> |</span>
+                                <a class="outer-link" href="">忘记密码？</a>
+                            </div>
+                            {{csrf_field()}}
+                        </form>
+                    </div>
                     @if (count($errors) > 0)
                     <div class="mws-form-message error mt20">
                         <div class="alert alert-danger">
@@ -75,6 +98,15 @@
 		    </div>
 	  	</div>
     </div>
-   
 </body>
+<script>
+    $('#phone').click(function(){
+        $('#mails').hide();
+        $('#phones').show();
+    })
+    $('#mail').click(function(){
+        $('#phones').hide();
+        $('#mails').show();
+    })
+</script>
 </html>

@@ -28,7 +28,8 @@ Route::get('/registercode','Home\LoginController@code');
 //邮箱注册激活
 Route::get('/jihuo','Home\RegisterController@jihuo');
 //手机注册
-Route::resource('/registerphone','Home\PhoneRegisterController');
+Route::get('/checkphone','Home\RegisterController@checkphone');
+
 
 //登录
 Route::resource('/login','Home\LoginController');

@@ -5,7 +5,7 @@
 .clear{clear:both;}
 .border{border:1px solid red;}
 .mt20{margin-top:30px;}
-
+.mt10{margin-top:10px;}
 input{border:0;outline:none;}
 a{color:#00007F;text-decoration:none;}
 ul li{list-style:none;}
@@ -58,8 +58,10 @@ body {margin: 0px; padding:0px;}
 		color: #f56600;
         font-size:30px;
 	}
-
-	.login_banner_panel .layout .nav_tabs a:hover,.nav_tabs a.now {
+    .login_banner_panel .layout .nav_tabs a:hover{
+        color:#ccc;
+    }
+	.nav_tabs a.now {
 		color: #f56600;
 	}
 

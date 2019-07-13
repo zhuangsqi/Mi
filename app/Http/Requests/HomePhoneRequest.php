@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HomeUserRequest extends FormRequest
+class HomePhoneRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,10 +29,8 @@ class HomeUserRequest extends FormRequest
             'password'=>'required|regex:/\w{6,18}/',
             //重复密码规则
             'repassword'=>'required|regex:/\w{6,18}/|same:password',
-            //邮箱
-            'email'=>'required|email|unique:adminuser',
             //电话
-            //'phone'=>'required|regex:/\d{11}/|unique:adminuser',
+            'phone'=>'required|regex:/\d{11}/|unique:adminuser',
         ];
     }
 
@@ -47,13 +45,10 @@ class HomeUserRequest extends FormRequest
             'repassword.regex'=>'重复密码必须是6-18的任意的数字字母或者下划线',
             'repassword.same'=>'两次密码不一致',
             
-            'email.required'=>'邮箱不能为空',
-            'email.email'=>'邮箱不符合规则',
-            'email.unique'=>'这个邮箱已被注册',
             
-            //'phone.required'=>'手机号不能为空',
-            //'phone.regex'=>'请输入正确的手机号',
-           // 'phone.unique'=>'这个手机号已被注册',
+            'phone.required'=>'手机号不能为空',
+            'phone.regex'=>'请输入正确的手机号',
+            'phone.unique'=>'这个手机号已被注册',
         ];
     }
 }

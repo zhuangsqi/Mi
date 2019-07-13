@@ -27,9 +27,9 @@
 					<div class="xian center"></div>
 				</div>
 				<div class="regist_zc">
-					<div class="regist_fs fl"><a id="mail">邮箱注册</a></div>
-					<div class="regist_shu fl" style="font-size: 35px;margin-top:20px;">|</div>
 					<div class="regist_fs fl"><a id="phone">手机注册</a></div>
+					<div class="regist_shu fl" style="font-size: 35px;margin-top:20px;">|</div>
+					<div class="regist_fs fl"><a id="mail">邮箱注册</a></div>
 					<div class="clear"></div>
 				</div>
 
@@ -74,7 +74,7 @@
 				</div>
 
 				<div id="rephone"  style="display:block;">
-					<form  method="post" action="/registerphone">
+					<form  method="post"  id="tijiao" action="/registerphone">
 					<div class="regist_main center">
 						@if(count($errors)>0)
 				        <div class="mws-form-message error" id="error" style="display: block;">
@@ -154,7 +154,7 @@
 	    	}else{
 	    		//Ajax判断手机是否被注册
 	    		$.get("/checkphone",{p:p},function(data){
-	    			alert(data);
+	    			
 	    			if(data==1){
 	    				ob.next('span').css('color','red').html('手机号已被注册');
 	    				ob.addClass("cur");
@@ -171,5 +171,66 @@
 	    		});
 	    	}
 	    });
+
+	    //获取手机验证码
+	    $("#huoqu").click(function(){
+	    	oo=$(this);
+	    	pp=$("input[name='phone']").val();
+	    	$.get('/sendphone',{pp:pp},function(data){
+	    		//判断状态码
+	    		// alert(data.result);
+	    		if(data.result==0){
+	    			m=60;
+	    			mytime=setInterval(function(){
+	    				m--;
+	    				oo.html(m);
+	    				oo.attr('disabled',true);
+	    				if(m<0){
+	    					clearInterval(mytime);
+	    					oo.html('获取验证码');
+	    					oo.attr('disabled',false);
+	    				}
+	    			},1000);
+	    		}
+	    	},'json');
+	    });
+
+	    //校验输入框
+		$("input[name='code']").blur(function(){
+		  cc=$(this);
+		  bb=$(this).parent();
+		  //获取输入的校验码
+		  code=$(this).val();
+		  //Ajax 请求
+		  $.get("/checkcode",{code:code},function(data){
+		    if(data==1){
+		      bb.siblings("span").css("color","green").html("校验码正确");
+		      cc.addClass("curs");
+		      CODE=true;
+		    }else if(data==2){
+		      bb.siblings("span").css("color","red").html("校验码有误");
+		      cc.addClass("cur");
+		      CODE=false;
+		    }else if(data==3){
+		      bb.siblings("span").css("color","red").html("校验码为空");
+		      cc.addClass("cur");
+		      CODE=false;
+
+		    }else{
+		      bb.siblings("span").css("color","red").html("校验码过期");
+		      cc.addClass("cur");
+		      CODE=false;
+		    }
+		  });
+		});
+
+		$("#tijiao").submit(function(){
+			$("input").trigger('blur');
+			if(PHONES && CODE){
+				return true;
+			}else{
+				return false;
+			}
+		});
 	</script>
 </html>

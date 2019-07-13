@@ -11,14 +11,6 @@
 |
 */
 
-//登录和退出
-Route::resource("/adminlogin","Admin\AdminLoginController");
-
-
-
-
-
-
 //前台继承
 Route::resource('/','Home\Indexcontroller');
 //邮箱注册
@@ -29,19 +21,28 @@ Route::get('/registercode','Home\LoginController@code');
 Route::get('/jihuo','Home\RegisterController@jihuo');
 //手机注册
 Route::get('/checkphone','Home\RegisterController@checkphone');
-
-
+//获取手机验证码
+Route::get('/sendphone','Home\RegisterController@sendphone');
+//检测验证码
+Route::get('/checkcode','Home\RegisterController@checkcode');
+//手机注册
+Route::post('/registerphone','Home\RegisterController@registerphone');
 //登录
 Route::resource('/login','Home\LoginController');
 //登录校验码
 Route::get('/code','Home\LoginController@code');
+//手机登录
+Route::post('/phonelogin','Home\LoginController@phonelogin');
 //前台退出登录
 Route::get('/uplogin','Home\Indexcontroller@uplogin');
+//找回密码 重置密码
+Route::get('/reset','Home\LoginController@reset');
+//前台需要登录访问的模块
 Route::group(['middleware'=>'homelogin'],function(){
 	//个人中心
 	Route::resource('/user','Home\Usercontroller');
 	//购物车
-	ROute::resource('/cart','Home\CartController');
+	Route::resource('/cart','Home\CartController');
 
 });
 
@@ -49,6 +50,9 @@ Route::group(['middleware'=>'homelogin'],function(){
 
 
 
+
+//后台登录和退出
+Route::resource("/adminlogin","Admin\AdminLoginController");
 
 
 

@@ -10,12 +10,14 @@ use Mail;
 use Hash;
 //模型
 use App\Models\Users;
-//表单检验
+//邮箱注册表单检验
 use App\Http\Requests\HomeMailRequest;
+//手机注册表单检验
+use App\Http\Requests\HomePhoneRequest;
 //校验码
 use Gregwar\Captcha\CaptchaBuilder;
 //短信引入
-use Qcloud\Sms\SmsSenderUtil; 
+use Qcloud\Sms\SmsSingleSender; 
 class RegisterController extends Controller
 {
     /**
@@ -170,5 +172,66 @@ class RegisterController extends Controller
             echo 0;//手机号可用
         }
 
+    }
+
+    public function sendphone(Request $request){
+        $pp=$request->input('pp');
+        // 短信应用SDK AppID
+        $appid = 1400231589; // 1400开头
+        // 短信应用SDK AppKey
+        $appkey = "efd946dc7c589652a212d7530208c359";
+        // 需要发送短信的手机号码
+        $phoneNumbers = $pp;
+        // 短信模板ID，需要在短信应用中申请
+        $templateId = 371369;  // NOTE: 这里的模板ID`7839`只是一个示例，真实的模板ID需要在短信控制台中申请
+        // 签名
+        $smsSign = "一根头发"; // NOTE: 这里的签名只是示例，请使用真实的已申请的签名，签名参数使用的是`签名内容`，而不是`签名ID`
+        $yanzheng=rand(1,10000);
+        \Cookie::queue("fcode",$yanzheng,1);
+
+        $ssender = new SmsSingleSender($appid, $appkey);
+        $params = array($yanzheng,'1');
+        $result = $ssender->sendWithParam("86", $phoneNumbers, $templateId,
+            $params, $smsSign, "", "");  // 签名参数未提供或者为空时，会使用默认签名发送短信
+        $rsp = json_decode($result);
+        echo $result;
+    }
+
+    //检测校验码
+    public function checkcode(Request $request){
+        //输入的校验码
+        $code=$request->input("code");
+        
+        //判断如果发送了校验码而且校验不为空
+        if(isset($_COOKIE['fcode']) && !empty($code)){
+            //获取手机接收的系统校验码
+            $fcode=$request->cookie("fcode");
+            if($fcode==$code){
+                echo 1;//校验码没有问题
+            }else{
+                echo 2;//校验码有误
+            }
+        }elseif(empty($code)){
+                echo 3;//输入的校验码为空
+        }else{
+                echo 4;//校验码已经过期
+
+        }
+
+    }
+
+    //手机注册
+    public function registerphone(HomePhoneRequest $request){
+        $data = $request->except(['repassword','_token']);
+        $data['status']=1;
+        $data['face']=0;
+        $data['name']='pt'.rand(1,10000);
+        $data['password']=Hash::make($data['password']);
+        $data['token']=str_random(50);
+        if(Users::create($data)){
+            return redirect('/login')->with('success','注册成功，请登录！');
+        }else{
+            return back()->with('error','请重新获取验证码');
+        }
     }
 }

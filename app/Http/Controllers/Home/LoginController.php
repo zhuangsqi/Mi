@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Hash;
-use App\Http\Requests\HomeLoginRequest;
+use App\Http\Requests\HomeMailLoginRequest;
+use App\Http\Requests\HomePhoneLoginRequest;
 use Gregwar\Captcha\CaptchaBuilder; 
 class LoginController extends Controller
 {
@@ -54,12 +55,12 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(HomeLoginRequest $request)
+    public function store(HomeMailLoginRequest $request)
     {
         $code = $request->input('code');
         $vcode=session('vcode');
         if(!$code == $vcode){
-            return back()->with('error','检验码错误');
+            return back()->with('error','检验码错误!!!');
         }
         $email = $request->email;
         $password = $request->password;
@@ -67,16 +68,51 @@ class LoginController extends Controller
         $info = DB::table('adminuser')->where('email','=',$email)->first();
         if($info){      
             if(Hash::check($password,$info->password)){
-                session(['name'=>$info->name]);
-                return redirect('/');
+                if($info->status == 1){
+                    session(['name'=>$info->name]);
+                    return redirect('/');
+                }else{
+                    return back()->with('error','账号没有激活!!!');
+                }      
             }else{
-                return back()->with('error','账号或密码错误');
+                return back()->with('error','账号或密码错误!!!');
             }
         }else{
-            return back()->with('error','账号或密码错误');
+            return back()->with('error','账号或密码错误!!!');
         }        
     }
 
+    //手机登录
+    public function phonelogin(HomePhoneLoginRequest $request){
+        $code = $request->input('code');
+        $vcode=session('vcode');
+        if(!$code == $vcode){
+            return back()->with('error','检验码错误!!!');
+        }
+        $phone = $request->phone;
+        $password = $request->password;
+
+        $info = DB::table('adminuser')->where('phone','=',$phone)->first();
+        if($info){      
+            if(Hash::check($password,$info->password)){
+                if($info->status == 1){
+                    session(['name'=>$info->name]);
+                    return redirect('/');
+                }else{
+                    return back()->with('error','账号没有激活!!!');
+                }     
+            }else{
+                return back()->with('error','账号或密码错误!!!');
+            }
+        }else{
+            return back()->with('error','账号或密码错误!!!');
+        }         
+    }
+
+    //重置密码
+    public function reset(Request $request){
+        return view('Home.Login.reset');
+    }
     /**
      * Display the specified resource.
      *

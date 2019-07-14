@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HomeLoginRequest extends FormRequest
+class HomePhoneLoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,17 @@ class HomeLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=>'required|email|exists:adminuser',
+            'phone'=>'required|exists:adminuser',
             //密码规则
             'password'=>'required',
         ];
     }
 
-     //自定义错误消息
     public function messages(){
         return [
             //自定义规则错误消息
-            'email.required'=>'账号不能为空',
-            'email.exists'=>'账号或密码不正确!',
+            'phone.required'=>'账号不能为空',
+            'phone.exists'=>'账号或密码不正确!',
             'password.required'=>'密码不能为空',
             
         ];

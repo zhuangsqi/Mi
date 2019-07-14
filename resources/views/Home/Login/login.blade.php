@@ -15,46 +15,41 @@
         <div class="layout">
             <div class="login fr">
                 <div id="nav-tabs" class="nav_tabs mt20">
-                    <a class="navtab-link now" data-tab="pwd" id="mail">邮箱登录</a>
+                    <a class="navtab-link now" data-tab="pwd" id="phone">手机登录</a> 
                     <a class="navtab-link now" data-tab="pwd">&nbsp;&nbsp;|&nbsp;&nbsp;</a>
-                    <a class="navtab-link now" data-tab="pwd" id="phone">手机登录</a>  
+                    <a class="navtab-link now" data-tab="pwd" id="mail">邮箱登录</a>                    
                 </div>
                 <div class="login_form ">
-                    <div id="mails" style="display: block;">
+                    <div id="mails" style="display: none;">
                         <form action="/login" method="POST" id="login-main-form"  align="center">    
                             <input class="item_account mt20" type="text" name="email" id="username" placeholder="邮箱@">
                             <input class="item_account mt20" type="password" id="pwd" name="password" placeholder="密码">
-                            {{session('error')}}
                             <div class="item_account_code mt20">
                                 <input class="item_code" type="text" name="code" placeholder="检验码">
                                 <img src="/code" onclick="this.src=this.src+'?a=1'" style="float:right">
                             </div>
-                            <input class="btnadpt mt20" id="login-button" type="submit" value="登 录">
-                            <div class="n_links_area mt20">
-                                <a class="outer-link" href="/register">立即注册</a>
-                                <span> |</span>
-                                <a class="outer-link" href="">忘记密码？</a>
-                            </div>
+                            <p style="color:red;">{{session('error')}}</p>
+                            <input class="btnadpt mt10" id="login-button" type="submit" value="登 录">
                             {{csrf_field()}}
                         </form>
                     </div>
-                    <div id="phones" style="display: none;">
-                        <form action="/login" method="POST" id="login-main-form"  align="center">    
+                    <div id="phones" style="display: block;">
+                        <form action="/phonelogin" method="POST" id="login-main-form"  align="center">    
                             <input class="item_account mt20" type="text" name="phone" id="username" placeholder="手机号">
                             <input class="item_account mt20" type="password" id="pwd" name="password" placeholder="密码">
-                            {{session('error')}}
                             <div class="item_account_code mt20">
                                 <input class="item_code" type="text" name="code" placeholder="检验码">
                                 <img src="/code" onclick="this.src=this.src+'?a=1'" style="float:right">
                             </div>
-                            <input class="btnadpt mt20" id="login-button" type="submit" value="登 录">
-                            <div class="n_links_area mt20">
-                                <a class="outer-link" href="/register">立即注册</a>
-                                <span> |</span>
-                                <a class="outer-link" href="">忘记密码？</a>
-                            </div>
+                            <p style="color:red;">{{session('error')}}</p>
+                            <input class="btnadpt mt10" id="login-button" type="submit" value="登 录">
                             {{csrf_field()}}
                         </form>
+                    </div>
+                    <div class="n_links_area fr mt10">
+                        <a class="outer-link" href="/register">立即注册</a>
+                        <span> |</span>
+                        <a class="outer-link" href="/reset">忘记密码？</a>
                     </div>
                     @if (count($errors) > 0)
                     <div class="mws-form-message error mt20">

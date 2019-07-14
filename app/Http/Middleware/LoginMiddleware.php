@@ -32,10 +32,10 @@ class LoginMiddleware
             $nodelist=session('nodelist');
             // dd($nodelist);
             //判断访问控制器是否存在或者访问控制器的方法是否存在于权限类表里
-            if(empty($nodelist[$controllerName]) || !in_array($actionName,$nodelist[$controllerName])){
-                return redirect("/admin")->with('error',"抱歉,您没有权限访问该模块,请联系超级管理员");
-                // echo "qqqqq";die;
-            }
+            // if(empty($nodelist[$controllerName]) || !in_array($actionName,$nodelist[$controllerName])){
+            //     return redirect("/admin")->with('error',"抱歉,您没有权限访问该模块,请联系超级管理员");
+            //     // echo "qqqqq";die;
+            // }
             //执行下个请求
             return $next($request);
         }else{

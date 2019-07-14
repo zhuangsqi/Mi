@@ -42,7 +42,13 @@ Route::post('/phonelogin','Home\LoginController@phonelogin');
 //前台退出登录
 Route::get('/uplogin','Home\Indexcontroller@uplogin');
 //找回密码 重置密码
+Route::get('/repwd','Home\LoginController@repwd');
+Route::post('/dorepwd','Home\LoginController@dorepwd');
 Route::get('/reset','Home\LoginController@reset');
+Route::post('/doreset','Home\LoginController@doreset');
+//找回密码 邮箱\验证码校验
+Route::get('/checkmail','Home\LoginController@checkmail');
+Route::get('/repwdcheckcode','Home\LoginController@repwdcheckcode');
 //前台需要登录访问的模块
 Route::group(['middleware'=>'homelogin'],function(){
 	//个人中心

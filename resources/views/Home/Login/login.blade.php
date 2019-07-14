@@ -49,7 +49,7 @@
                     <div class="n_links_area fr mt10">
                         <a class="outer-link" href="/register">立即注册</a>
                         <span> |</span>
-                        <a class="outer-link" href="/reset">忘记密码？</a>
+                        <a class="outer-link" href="/repwd">忘记密码？</a>
                     </div>
                     @if (count($errors) > 0)
                     <div class="mws-form-message error mt20">

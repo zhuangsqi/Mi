@@ -19,33 +19,26 @@
         <h4 class="title_big30">重置密码</h4>
       </div>
       <!-- 记得在此添加标记语言uLocale -->
-      <div class="regbox">
-        <h5 class="n_tit_msg">请输入注册的邮箱地址、手机号码或帐号：</h5>      
-        <div class="inputbg">
-          <!-- 错误添加class为err_label -->
-          <label class="labelbox labelbox-user" for="user">
-            <input type="text" name="id" id="user" placeholder="邮箱/手机号码/小米帐号">
-          </label>
-        </div>	
-        <div class="err_tip error-con">
-          <div class="dis_box">
-            <em class="icon_error"></em>
-            <span></span>
+        <form action="/doreset" method="post">
+          <div class="regbox">
+            <input type="hidden" name="id" value="{{$id}}">     
+            <div class="inputbg">
+              <label class="labelbox labelbox-user" for="user">
+                <input type="password" name="password" id="user" placeholder="新密码">
+              </label>
+            </div>	
+        		<div class="inputbg">
+              <label class="labelbox labelbox-user" for="user">
+                <input type="password" name="repassword" id="user" placeholder="重复新密码">
+              </label>
+            </div>  
+        		<p style="color:red;">{{session('error')}}</p>
+            <div class="fixed_bot">
+              <input class="btn332 btn_reg_1" type="submit" value="确认">   
+            </div>
           </div>
-        </div> 
-		<div class="inputbg inputcode dis_box">
-			<label class="labelbox labelbox-captcha" for="">
-				<input id="code-captcha" class="code" type="text" name="code" autocomplete="off" placeholder="图片验证码">
-			</label>
-			<img src="/code" onclick="this.src=this.src+'?a=1'" title="看不清换一张" class="chkcode_img icode_image code-image">
-		</div>
-		<div class="err_tip error-con">
-			<div class="dis_box"><em class="icon_error"></em><span></span></div>
-		</div> 
-        <div class="fixed_bot">
-          <input class="btn332 btn_reg_1" type="button" id="submit_button" value="下一步">   
-        </div>
-      </div>
+          {{csrf_field()}}
+        </form>
     </div>
     </div>
   </div>

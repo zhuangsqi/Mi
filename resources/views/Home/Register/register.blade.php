@@ -15,7 +15,7 @@
 	    .curs{
 	      border:1px solid green;
 	    }
-  </style>
+ 	 	</style>
 	</head>
 	<body>
 		<div class="regist">

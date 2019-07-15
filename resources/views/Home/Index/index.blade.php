@@ -13,7 +13,7 @@
 						@if(count($row->suv))
 						<div class="pop">
 							@foreach($row->suv as $rows)
-							<div class="left fl">
+							<div class="left fl">				
 								<div>
 									<div class="xuangou_left fl">
 										<a href="">

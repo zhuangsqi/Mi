@@ -7,7 +7,7 @@
 				<div class="face_block mt20">
 					<img class=".img" src="/upload/{{$data->face}}" width="220" height="220">
 				</div>
-				<input type="file" name="pic" value="1">
+				<input type="file" name="pic" value="1" title="修改头像">
 				<!--<span class="input_sub" style="border:0;"><a href="">更换头像</a></span>-->
 			</div>
 			<div class="fr mt20">

@@ -1,35 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Hash;
-use DB;
-use Mail;
-use App\Models\Users;
-class IndexController extends Controller
+
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public static function getCatesBypid($pid){
-        $data = DB::table("cates")->where("pid","=",$pid)->get();
-        $data1 = array();
-        foreach ($data as $key=>$value){
-            $value->suv = self::getCatesBypid($value->id);
-            $data1[] = $value;
-        }
-        return $data1;
-    }
-    
-    public function index(Request $request)
-    {   
-        $cate = self::getCatesBypid(0);
-        return view('Home.Index.index',['cate'=>$cate]);
-        
+    public function index()
+    {
+        //加载后台模板
+        return view("Admin.Admin.index");
     }
 
     /**
@@ -39,7 +25,7 @@ class IndexController extends Controller
      */
     public function create()
     {
-        return view('Home.Register.register');
+        //
     }
 
     /**
@@ -48,10 +34,11 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(HomeUserRequest $request)
+    public function store(Request $request)
     {
-       
+        //
     }
+
     /**
      * Display the specified resource.
      *
@@ -95,11 +82,5 @@ class IndexController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    //退出登录
-    public function uplogin(Request $request){
-        $request->session()->pull('name');
-        return redirect('/');
     }
 }

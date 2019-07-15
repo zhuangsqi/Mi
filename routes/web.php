@@ -121,6 +121,8 @@ Route::group(['middleware'=>'homelogin'],function(){
 	Route::resource('/user','Home\Usercontroller');
 	//购物车
 	Route::resource('/cart','Home\CartController');
+	//收货地址
+	Route::resource('/address','Home\AddressController');
 
 });
 

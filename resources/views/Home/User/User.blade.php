@@ -1,6 +1,6 @@
 @extends('Home.HomePublic.user')
 @section('user')
-		<div class="rtcont fr">
+		
 		  <form action="/user/{{$data->id}}" method="post" enctype="multipart/form-data">
 			<div class="face fl ml40 mt20">
 				<div class="grzlbt">我的头像</div>
@@ -28,6 +28,6 @@
 				<a href="/"><span class="input_sub ml40" style="padding:8px 60px;">返回首页</span></a>
 			</div>
 		  </form>
-		</div>
+		
 @endsection
 @section('title','小米商城-个人中心')

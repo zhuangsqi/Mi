@@ -20,14 +20,16 @@
 					<li><a href="/user">我的个人中心</a></li>
 					<li><a href="">消息通知</a></li>
 					<li><a href="">优惠券</a></li>
-					<li><a href="">收货地址</a></li>
+					<li><a href="/address">收货地址</a></li>
 				</ul>
 			</div>
 		</div>
+		<div class="rtcont fr">
 		@section('user')
 
 
 		@show
+		</div>
 		<div class="clear"></div>
 		</div>
 	</div>

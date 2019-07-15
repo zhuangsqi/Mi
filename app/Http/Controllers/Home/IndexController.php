@@ -73,7 +73,7 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
     }
 
     /**

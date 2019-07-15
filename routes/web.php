@@ -45,6 +45,10 @@
 
 
 
+//后台轮播图模块
+Route::resource("/lbt","Admin\LbtController");
+//后台无限分类模块
+Route::resource("/admincates","Admin\catesController");
 
 
 

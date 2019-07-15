@@ -46,9 +46,9 @@
 		</nav>
 		<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 			<ul class="cl">
-				<li>超级管理员</li>
+				<li></li>
 				<li class="dropDown dropDown_hover">
-					<a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+					<a href="#" class="dropDown_A">{{session('adminname')}} <i class="Hui-iconfont">&#xe6d5;</i></a>
 					<ul class="dropDown-menu menu radius box-shadow">
 						<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
 						<li><a href="#">切换账户</a></li>
@@ -91,7 +91,12 @@
 					<ul>
 						<li><a data-href="member-list.html" data-title="图片管理" href="/adminusers/create">添加管理员</a></li>
 						<li><a data-href="member-del.html" data-title="图片管理"  href="/adminusers">管理员列表</a></li>
+						<li><a data-href="member-list.html" data-title="图片管理" href="/adminroles/create">角色添加</a></li>
+						<li><a data-href="member-list.html" data-title="图片管理" href="/adminroles">角色列表</a></li>
+						<li><a data-href="member-list.html" data-title="图片管理" href="/auth/create">权限添加</a></li>
+						<li><a data-href="member-list.html" data-title="图片管理" href="/auth">权限列表</a></li>
 					</ul>
+
 				</dd>
 			</dl>
 		</dl>
@@ -104,11 +109,22 @@
 			</ul>
 		</dd>
 	</dl>
+	<dl id="menu-picture">
+			<dt><i class="Hui-iconfont">&#xe613;</i>快递管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="picture-list.html" data-title="图片管理" href="/express/create">快递添加</a></li>
+					<li><a data-href="picture-list.html" data-title="图片管理" href="/express">快递列表</a></li>
+			</ul>
+		</dd>
+	</dl>
 </div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
 <section class="Hui-article-box">
+
 @section("main")
+
 @show
 </section>
 <!--_footer 作为公共模版分离出去-->
@@ -119,19 +135,68 @@
 
 <script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script> 
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
-<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script> 
 <script type="text/javascript">
 $('.table-sort').dataTable({
-	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+	"aaSorting": [[ 1, "asc" ]],//默认第几个排序
 	"bStateSave": true,//状态保存
-	"aoColumnDefs": [
-	  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
-	  {"orderable":false,"aTargets":[0,8]}// 制定列不参与排序
-	]
+
+	
+	lengthMenu: [3,5,10]//每页可显示条目选择列表
+
 });
 
+/*用户-删除*/
+function user_del(obj,id){
+	layer.confirm('删除成功',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '',
+			dataType: 'json',
+			success: function(data){
+				$(obj).parents("tr").remove();
+				layer.msg('已删除!',{icon:1,time:1000});
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});		
+	});
+}
+function admin_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+	var index = parent.layer.getFrameIndex(window.name);
+}
+
+function member_huanyuan(obj,id){
+	layer.msg('添加成功!',{icon:1,time:1000});
+}
+function member_huanyuan2(obj,id){
+		layer.msg('添加失败',{icon: 6,time:1000});
+}
+function member_huanyuan3(obj,id){
+	layer.msg('修改成功!',{icon:1,time:1000});
+}
+function member_huanyuan4(obj,id){
+	layer.msg('修改失败!',{icon:1,time:1000});
+}
+	$("#form-admin-role-edit").validate({
+		rules:{
+			roleName:{
+				required:true,
+			},
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.layer.close(index);
+		}
+	});
 
 
-</script> 
+</script>
 </body>
 </html>

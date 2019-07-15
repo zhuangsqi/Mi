@@ -1,0 +1,1 @@
+<a href="http://www.imi.com/a?id={{$id}}&token={{$token}}">激活用户</a>

@@ -8,9 +8,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
 //导入Hash类
 use Hash;
 use DB;
+use App\Models\Users;
 //导入要调用的模型类
 //use App\Providers\Userss
-use App\Http\Requests\UsersInsertRequest;
+// use App\Http\Requests\UsersInsertRequest;
 class UserController extends Controller
 {
     /**
@@ -20,13 +21,14 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $id =1;
         //获取搜索的参数
         $k = $request->input("keyword");
         //获取列表数据
-        $data = DB::table("adminuser")->where("name","like","%".$k."%")->paginate(3);
-        // $data = Userss::where("username","like","%".$k."%")->paginate(3);
+        $data = Users::where("name","like","%".$k."%")->paginate();
+     
         //加载模板
-        return view("Admin.User.index",['data'=>$data,'request'=>$request->all()]);
+        return view("Admin.User.index",['data'=>$data,'request'=>$request->all(),'id'=>$id]);
     }
 
     /**
@@ -37,7 +39,7 @@ class UserController extends Controller
     public function create()
     {
         //加载添加用户的页面
-        return view("Admin.Admin.add");
+        return view("Admin.User.add");
     }
 
     /**
@@ -46,15 +48,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UsersInsertRequest $request)
+    
+    public function store(Request $request)
     {
-        //添加用户
-       	// dd($_POST);
+
        	$data = $request->except(['_token']);
+        $data['status'] = 0;
+        $data['token'] = str_random(50);
+        $name=time();
+        $files =$request->file('face')->getClientOriginalExtension(); 
+        $request->file("face")->move("./uploads/Face/",$name.".".$files);
+         
+        $data['face']=$name.".".$files;
        	//加密密码
        	$data['password'] = Hash::make($data['password']);
-        $data['creattime'] = time("Y-m-d H:i:s");
-       	if(DB::table("adminuser")->insert($data)){
+       	if(Users::create($data)){
        		return redirect("/adminuser")->with("success","添加成功");
 
        	}else{
@@ -84,6 +92,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        return view("Admin.User.edit");
     }
 
     /**

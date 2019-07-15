@@ -45,5 +45,7 @@ Route::group(['middleware'=>"login"],function(){
 	Route::resource("/xiugai","Admin\ProductController@xiugai");
 	//后台公告模块
 	Route::resource("/article","Admin\ArticleController");
+	//快递
+	Route::resource("/express","Admin\ExpressController");
 });
 

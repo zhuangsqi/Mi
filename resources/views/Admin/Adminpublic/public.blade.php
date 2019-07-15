@@ -106,6 +106,15 @@
 			</ul>
 		</dd>
 	</dl>
+	<dl id="menu-picture">
+			<dt><i class="Hui-iconfont">&#xe613;</i>快递管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="picture-list.html" data-title="图片管理" href="/express/create">快递添加</a></li>
+					<li><a data-href="picture-list.html" data-title="图片管理" href="/express">快递列表</a></li>
+			</ul>
+		</dd>
+	</dl>
 	<dl id="menu-product">
 			<dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
@@ -173,6 +182,55 @@ $('.table-sort').dataTable({
 
 
 });
+/*用户-删除*/
+function user_del(obj,id){
+	layer.confirm('删除成功',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '',
+			dataType: 'json',
+			success: function(data){
+				$(obj).parents("tr").remove();
+				layer.msg('已删除!',{icon:1,time:1000});
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});		
+	});
+}
+function admin_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+	var index = parent.layer.getFrameIndex(window.name);
+}
+
+function member_huanyuan(obj,id){
+	layer.msg('添加成功!',{icon:1,time:1000});
+}
+function member_huanyuan2(obj,id){
+		layer.msg('添加失败',{icon: 6,time:1000});
+}
+function member_huanyuan3(obj,id){
+	layer.msg('修改成功!',{icon:1,time:1000});
+}
+function member_huanyuan4(obj,id){
+	layer.msg('修改失败!',{icon:1,time:1000});
+}
+	$("#form-admin-role-edit").validate({
+		rules:{
+			roleName:{
+				required:true,
+			},
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.layer.close(index);
+		}
+	});
 
 
 </script> 

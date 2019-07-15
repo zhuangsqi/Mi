@@ -82,9 +82,9 @@
 				</dd>
 			</dl>
 		</dl>
-		<dl id="menu-article">
+		<dl id="menu-admin">
 			<dl id="menu-member">
-				<dt><i class="Hui-iconfont">&#xe60d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 				<dd>
 					<ul>
 						<li><a data-href="member-list.html" data-title="图片管理" href="/adminusers/create">添加管理员</a></li>
@@ -114,8 +114,18 @@
 					<li><a data-href="product-brand.html" data-title="品牌管理" href="/adminproduct">管理品牌</a></li>
 				</ul>
 			</dd>
+	</dl>
+	<dl id="menu-article">
+			<dt><i class="Hui-iconfont">&#xe616;</i> 公告管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="article-list.html" data-title="资讯管理" href="/article">公告管理</a></li>
+				</ul>
+				<ul>
+					<li><a data-href="article-list.html" data-title="资讯管理" href="/article/create">公告添加</a></li>
+				</ul>
+			</dd>
 		</dl>
-	
 </div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>

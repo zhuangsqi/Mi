@@ -93,7 +93,9 @@ class ProductController extends Controller
     {
         //
     }
-
+    public function xiugai(){
+        echo "1111";
+    }
     /**
      * Remove the specified resource from storage.
      *

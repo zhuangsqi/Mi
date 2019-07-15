@@ -16,9 +16,9 @@ class Userss extends Model
     protected $fillable = ['username',"password","email","phone","created_at","updated_at"];
 
     //修改器 对数据做自动处理 status 字段名 
-    public function getStatusAttribute($value){
-    	$status=[0=>"禁用",1=>"开启"];
-    	return $status[$value];
+    public function getSexAttribute($value){
+    	$sex=[0=>"女",1=>"男"];
+    	return $sex[$value];
 
     }
 

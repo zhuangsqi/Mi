@@ -36,11 +36,9 @@
 					<td><img src="./uploads/user/{{$row->face}}" width="100px"></td>
 					<td>{{$row->password}}</td>
 					<td>{{$row->created_at}}</td>
-					<td class="td-manage">			
-							
+					<td class="td-manage">						
 							<a title="修改" href="/adminuser/{{$row->id}}/edit" onclick="admin_edit('用户修改','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none;float:right;margin-right:15px;"><i class="Hui-iconfont">&#xe6df;</i>
-							</a>
-						
+							</a>			
 						<form action="/adminuser/{{$row->id}}" method="post">
 							{{method_field("DELETE")}}
 							{{csrf_field()}}

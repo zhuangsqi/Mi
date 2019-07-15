@@ -36,7 +36,7 @@
 						{{csrf_field()}}
 							<button title="删除" href="/admincates" onclick="system_category_del(this,'1')" class="ml-5" style="text-decoration:none; float:right;margin-right:30px;"><i class="Hui-iconfont">&#xe6e2;</i></button>
 						</form>	
-							<button title="编辑" href="javascript:;" onclick="system_category_edit('栏目编辑','system-category-add.html','1','700','480')" style="text-decoration:none; float:right;"><i class="Hui-iconfont">&#xe6df;</i></button>
+							<button title="编辑" href="javascript:;" onclick="system_category_edit('分类编辑','/resource/{{$row->id}}/edit','1','700','480')" style="text-decoration:none; float:right;"><i class="Hui-iconfont">&#xe6df;</i></button>
 							<a href="/adminauth/{{$row->id}}" class="btn btn-success">分配权限</a>
 					</td>
 

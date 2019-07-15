@@ -1,7 +1,7 @@
 @extends("Admin.Adminpublic.public")
 @section("main")
 <article class="page-container">
-	<form action="/adminuser" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data">
+	<form action="/	user" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
 			<div class="formControls col-xs-8 col-sm-9">

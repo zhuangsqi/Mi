@@ -28,10 +28,7 @@
 					<td class="text-l">{{$val->money}}</td>
 					<td class="text-l">{{$val->goods}}</td>
 					<td class="f-14 product-brand-manage">
-						<form action="adminproduct/edit" method="post">
-						<a style="text-decoration:none" onClick="product_brand_edit('品牌编辑','codeing.html','1')" href="/" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> 
-						{{csrf_field()}}
-						</form>
+						<a style="text-decoration:none" onClick="product_brand_edit('品牌编辑','codeing.html','1')" href="/xiugai" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> 
 						<a style="text-decoration:none" class="ml-5" onClick="active_del(this,'10001')" href="/adminproduct/{{$val->id}}" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a>
 					</td>
 				</tr>

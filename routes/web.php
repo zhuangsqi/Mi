@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 //登录和退出
 Route::resource("/adminlogin","Admin\AdminLoginController");
 
@@ -42,5 +41,9 @@ Route::group(['middleware'=>"login"],function(){
 	Route::resource("/adminpwd","Admin\AdminuserController@gedit");
 	//后台品牌管理模块
 	Route::resource("/adminproduct","Admin\ProductController");
+	//修改品牌的模块
+	Route::resource("/xiugai","Admin\ProductController@xiugai");
+	//后台公告模块
+	Route::resource("/article","Admin\ArticleController");
 });
 

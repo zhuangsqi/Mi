@@ -56,8 +56,8 @@
       <div class="user_name"><a id="user_name" class="">{{session('name')}}</a>
         <div id="user_name_none" class="user_name_none">
           <li><a href="/user">个人中心</a></li>
-          <li><a href=" ">我的订单</a></li>
-          <li><a href=" ">修改密码</a></li>
+          <li><a href="">我的订单</a></li>
+          <li><a href="/repwd">修改密码</a></li>
           <li><a href="/uplogin">退出登录</a></li>
         </div>
       </div>

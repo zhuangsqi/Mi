@@ -53,8 +53,6 @@
 			<div class="datu fl"><a href=""><img src="/static/Home/image/xiaomi5.jpg" alt=""></a></div>
 			<div class="datu fr"><a href=""><img src="/static/Home/image/pinghengche.jpg" alt=""></a></div>
 			<div class="clear"></div>
-
-
 		</div>
 	<!-- end banner -->
 	<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>

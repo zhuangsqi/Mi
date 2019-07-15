@@ -15,9 +15,20 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public static function getCatesBypid($pid){
+        $data = DB::table("cates")->where("pid","=",$pid)->get();
+        $data1 = array();
+        foreach ($data as $key=>$value){
+            $value->suv = self::getCatesBypid($value->id);
+            $data1[] = $value;
+        }
+        return $data1;
+    }
+    
     public function index(Request $request)
     {   
-        return view('Home.Index.index');
+        $cate = self::getCatesBypid(0);
+        return view('Home.Index.index',['cate'=>$cate]);
         
     }
 

@@ -72,29 +72,7 @@
 </div>
 </header>
 <aside class="Hui-aside">
-	<div class="menu_dropdown bk_2">
-		<dl id="menu-article">
-			<dl id="menu-member">
-				<dt><i class="Hui-iconfont">&#xe60d;</i> 用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-				<dd>
-					<ul>
-						<li><a data-href="member-list.html" data-title="会员列表" href="/adminuser/create">添加用户</a></li>
-						<li><a data-href="member-list.html" data-title="删除的会员" href="/adminuser">用户列表</a></li>
-					</ul>
-				</dd>
-			</dl>
-		</dl>
-		<dl id="menu-article">
-			<dl id="menu-member">
-				<dt><i class="Hui-iconfont">&#xe60d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-				<dd>
-					<ul>
-						<li><a data-href="member-list.html" data-title="管理员管理" href="/adminusers/create">添加管理员</a></li>
-						<li><a data-href="member-del.html" data-title="高压包李元管理"  href="/adminusers">管理员列表</a></li>
-					</ul>
-				</dd>
-			</dl>
-		</dl>
+<div class="menu_dropdown bk_2">
 	<dl id="menu-picture">
 			<dt><i class="Hui-iconfont">&#xe613;</i>分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
@@ -110,14 +88,6 @@
 				<ul>
 					<li><a data-href="picture-list.html" data-title="轮播图管理" href="/lbt/create">轮播图添加</a></li>
 					<li><a data-href="picture-list.html" data-title="轮播图管理" href="/lbt">轮播图管理</a></li>
-			</ul>
-		</dd>
-	</dl>
-	<dl id="menu-picture">
-			<dt><i class="Hui-iconfont">&#xe613;</i>友情链接管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a data-href="picture-list.html" data-title="友情链接管理" href="/link">友情链接管理</a></li>
 			</ul>
 		</dd>
 	</dl>

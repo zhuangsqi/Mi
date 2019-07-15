@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/******************************************************* 后台 ***************************************************/
 
 
 
@@ -45,6 +46,30 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//模板继承
+Route::resource("/admin","Admin\AdminController");
 //后台轮播图模块
 Route::resource("/lbt","Admin\LbtController");
 //后台无限分类模块
@@ -56,8 +81,6 @@ Route::resource("/admincates","Admin\catesController");
 
 
 //******************************************* 前台 *****************************************************
-
-
 
 
 //前台继承

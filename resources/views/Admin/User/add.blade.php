@@ -1,23 +1,9 @@
 @extends("Admin.AdminPublic.public")
 
 @section('main')
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户管理 <span class="c-gray en">&gt;</span> 用户添加 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <article class="page-container">
-
-	<form action="/adminuser" method="post" class="form form-horizontal" id="form-member-add">
-		 @if (count($errors) > 0)
-       <div class="jquery.validation error">
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-       </div>
-		@endif
-
-	<form action="/adminuser/create" method="post" class="form form-horizontal" id="form-member-add">
-
+	<form action="/adminuser" method="post" class="form form-horizontal" id="form-member-add" enctype="multipart/form-data">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -65,7 +51,8 @@
 				<input class="input-text upload-url" type="text" name="face" id="face" readonly nullmsg="请添加附件！" style="width:200px">
 				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
 				<input type="file" multiple name="face" class="input-file">
-				</span> </div>
+				</span> 
+			</div>
 		</div>
 		<div class="row cl">
 		{{csrf_field()}}

@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {   
-        $name  = session('name');
+        $name = session('info')->name;
         $data = Users::where('name','=',$name)->first();
         return view('Home.User.User',['data'=>$data]);
     }
@@ -70,6 +70,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
+    
     public function update(Request $request, $id)
     {
         $data = $request->except(['_token','_method','pic']);
@@ -83,19 +85,22 @@ class UserController extends Controller
             $request->file("pic")->move("./upload",$name.".".$ext);
             $data['face']=$name.'.'.$ext;
         }
+        
         if($data['sex']=='女'){
-            $data['sex']=0;
-        }
-        if($data['sex']=='男'){
+            $data['sex']=3;
+        }else if($data['sex']=='男'){
             $data['sex']=1;
-        }
-        if($data['sex']=='保密'){
+        }else if($data['sex']=='保密'){
             $data['sex']=2;
-        }
-        if($data['sex']==0 && 1 && 2){
+        }else{
             return back()->with('error','请输入:女/男/保密');
         }
+
         if(Users::where('id','=',$id)->update($data)){
+
+            /******* 问题1 ********/
+
+            session(['info'=>$info]);
             return redirect('/user');
         }else{
             return back();

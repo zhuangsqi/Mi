@@ -215,28 +215,35 @@ header .top .right .gouwuche:hover{color:#000;background: #666;}
 /*个人中心*/
 .grzxbj{width: 100%;height:auto;background: rgb(245,245,245);padding-bottom: 20px;padding-top: 20px;}
 .grzxbj .selfinfo{width: 1226px;}
-.grzxbj .selfinfo .lfnav{width: 234px;height: 600px;background: #fff;}
+.grzxbj .selfinfo .lfnav{width: 234px;height: auto;background: #fff;}
 .grzxbj .selfinfo .lfnav .ddzx{width: 234px;height: 40px;line-height: 40px;font-size: 19px; margin:30px 20px 10px 40px;color:rgb(51,51,51);}
 .grzxbj .selfinfo .lfnav .subddzx ul li{display: block;width: 194px;height: 40px;line-height: 40px;padding-left: 40px;}
 .grzxbj .selfinfo .lfnav .subddzx ul li a{color:rgb(117,117,117);}
 .grzxbj .selfinfo .lfnav .subddzx ul li a:hover{color:rgb(51,51,51);}
-.grzxbj .selfinfo .rtcont{width: 978px;height: 600px;background: #fff;}
+.grzxbj .selfinfo .rtcont{width: 978px;height: auto;background: #fff;padding-bottom:50px;}
 .grzxbj .selfinfo .rtcont .ddzxbt{width: 938px;height: 60px;line-height: 60px;font-size: 22px;font-weight:bold;color:rgb(117,117,117);padding-left: 40px;border-bottom: 1px solid #ccc;}
 .grzxbj .selfinfo .rtcont .grzlbt{width:680px;height: 60px;line-height: 60px;font-size: 20px;color:rgb(117,117,117);}
 .grzxbj .selfinfo .rtcont .subgrzl{height: 45px;line-height: 45px;width: 630px;background: rgb(253,253,253);border:1px solid #aaa;margin-top: 10px;margin-bottom: 10px;border-radius: 3px;}
 .grzxbj .selfinfo .rtcont .subgrzl .input_text{height:41px;width:200px;padding-left:30px;color:rgb(117,117,117);border:0px solid #aaa;outline:none;}
-.grzxbj .selfinfo .rtcont .input_sub{width:200px; height:45px;margin-top:40px;color:rgb(117,117,117);font-size:20px;border:1px solid #aaa;border-radius: 3px;}
+.grzxbj .selfinfo .rtcont .input_sub{width:200px; height:45px;color:rgb(117,117,117);font-size:20px;border:1px solid #aaa;border-radius: 3px;}
 .grzxbj .selfinfo .rtcont .input_sub:hover{color:#ff6700; }
 .grzxbj .selfinfo .rtcont .face{width:250px;height:355px;}
 .grzxbj .selfinfo .rtcont .face .face_block{width:220px;height:220px;border:1px #aaa solid;border-radius: 5px;}
-
 .grzxbj .selfinfo .rtcont .sub_edit{text-align: center;margin-top: 40px;width:900px;height:50px;}
 .grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(1){display: inline-block;font-size: 15px;font-weight: bold;color:rgb(117,117,117);width: 60px;height: 45px;line-height: 45px;padding-left: 20px;}
-.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(2){display: inline-block;font-size: 15px;color:rgb(117,117,117);width: 240px;height: 45px;line-height: 45px;padding-left: 120px;
-}
+.grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(2){display: inline-block;font-size: 15px;color:rgb(117,117,117);width: 240px;height: 45px;line-height: 45px;padding-left: 120px;}
 .grzxbj .selfinfo .rtcont .subgrzl span:nth-of-type(3){display: inline-block;font-size: 15px;width: 120px;height: 45px;line-height: 45px;text-align: right;}
 .grzxbj .selfinfo .rtcont .subgrzl span a{color:teal; }
 .grzxbj .selfinfo .rtcont .subgrzl span a:hover{color:#ff6700; }
+
+/*收货地址*/
+.address_k{margin:30px 0px 0px 40px;}
+.address{width:890px;height:50px;font-size:30px;color:rgb(117,117,117);}
+.address_jia,.address_you{width:245px;height:140px;margin:20px 20px 0px 0px;padding:20px;border:1px #aaa solid;}
+.address_jia:hover,.address_you:hover{border:1px rgb(117,117,117) solid;}
+.address_you .address_name{color:rgb(117,117,117);font-size:20px;margin-bottom:5px;}
+.address_you .address_p{color:rgb(117,117,117);margin-top:2px;}
+.grzxbj .selfinfo .rtcont .subgrzl .input_select{height:41px;width:130px;padding-left:30px;color:rgb(117,117,117);border:0px solid #aaa;outline:none;}
 
 /*订单中心*/
 .grzxbj .selfinfo .rtcont .ddxq{width: 938px;height: 120px;line-height: 120px;font-size: 17px;color:rgb(117,117,117); 

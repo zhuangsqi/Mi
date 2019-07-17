@@ -16,7 +16,7 @@ class HomeLogin
     public function handle($request, Closure $next)
     {
         //检测当前是否具有登录的session
-        if($request->session()->has('name')){
+        if($request->session()->has('info')){
             //执行下个请求
             return $next($request);
         }else{

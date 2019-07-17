@@ -12,12 +12,10 @@ class CatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        //获取搜索关键词
-        $k=$request->input('keyword');
+    public static function getCates(){
+
         //调整类别顺序连贯方法 Raw 原始表达式,防止sql语句注入
-        $cates=DB::table("cates")->select(DB::raw("*,concat(path,',',id)as paths"))->where("name","like","%".$k."%")->orderBy("paths")->get();
+        $cates=DB::table("cates")->select(DB::raw("*,concat(path,',',id)as paths"))->orderBy("paths")->get();
         //遍历数据
         foreach($cates as $key=>$value){
             $path=$value->path;
@@ -28,10 +26,32 @@ class CatesController extends Controller
             //str_repeat 重复字符串
             $cates[$key]->name=str_repeat("--|",$len).$value->name;
         }
-        return view("Admin.Cates.index",['cates'=>$cates,'request'=>$request->all()]);
+        return $cates;
 
     }
-
+    public function index(Request $request){
+        //获取搜索关键词
+        $k=$request->input('keyword');
+        //列表
+        // $cates=DB::select("select *,concat(path,',',id)as paths from cates order by paths");
+        //调整类别顺序连贯方法 Raw 原始表达式,防止sql语句注入
+        $cates=DB::table("cates")->select(DB::raw("*,concat(path,',',id)as paths"))->where("name","like","%".$k."%")->orderBy("paths")->get();
+        //遍历数据
+        foreach($cates as $key=>$value){
+            // echo $value->path."<br>";
+            $path=$value->path;
+            //转换为数组
+            $arr=explode(",",$path);
+            // echo "<pre>";
+            // var_dump($arr);
+            //获取逗号个数
+            $len=count($arr)-1;
+            //str_repeat 重复字符串
+            $cates[$key]->name=str_repeat("--|",$len).$value->name;
+        }
+        // dd($cates);
+        return view("Admin.Cates.index",['cates'=>$cates,'request'=>$request->all()]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -65,18 +85,9 @@ class CatesController extends Controller
         $info = DB::table("cates")->where("id","=",$pid)->first();
         $data['path']=$info->path.",".$info->id;
        }
-        $request->hasFile("img_url");
-        $file = $request->file("img_url");
-        $originalName = $file->getClientOriginalName();
-
-        //$ext = $request->file("pic")->getClientOriginalExtension();
-        $request->file('img_url')->move('./uploads/xt',$originalName);
-        //dd($request)
-        $data["img_url"] = $originalName;
        //入库
        if(DB::table("cates")->insert($data)){
         return redirect("/admincates")->with("success","添加成功");
-        
        }else{
         return back()->with("error","添加失败");
        }
@@ -125,18 +136,14 @@ class CatesController extends Controller
     public function destroy($id)
     {
         //获取当前类别的子类个数 如果子类个数>0 有子类 
-        $data = DB::table("cates")->where("pid","=",$id)->count();
-        $data1 = DB::table("cates")->find($id);
-        //dd($data1);
-        if($data > 0){
+        $s = DB::table("cates")->where("pid","=",$id)->count();
+        if($s > 0){
         	//给提示信息
         	return redirect("/admincates")->with('error',"请先干掉孩子");
         }else{
         	//直接删除类别
         	if(DB::table("cates")->where("id","=",$id)->delete()){
-                unlink('./uploads/xt/'.$data1->img_url);
         		return redirect("/admincates")->with("success","删除成功");
-                
         	}else{
         		return redirect("/admincates")->with("error","删除失败");
         	}

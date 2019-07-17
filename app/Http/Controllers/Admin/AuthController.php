@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-class AddressController extends Controller
+use App\Model\Userss;
+class AuthController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +16,12 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $id=session('info')->id;
-        dd(session('info'));
-        $info=DB::table('user_address')->where('u_id','=',$id)->get();
-        return view('Home.Address.index',['info'=>$info]);
+        //获取数据总条数
+       // $tot=Userss::count();
+       //  dd($tot);
+        //获取权限列表
+       $auth = DB::table("node")->get();
+       return view("Admin.Auth.index",['auth'=>$auth]); 
     }
 
     /**
@@ -27,16 +31,10 @@ class AddressController extends Controller
      */
     public function create()
     {
-        $id=session('info')->id;
-        $data=DB::table('adminuser')->where('id','=',$id)->first();
-        return view('Home.Address.add',['data'=>$data]);
+        //加载添加权限
+        return view("Admin.Auth.add");
     }
 
-    public function district(Request $request){
-        $id = $request->input('upid');
-        $data=DB::table('district')->where('upid','=',$id)->get();
-        echo $data;
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -45,12 +43,13 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        $info=$request->except('_token');
-        $info['createtime']=date('Y-m-d H:i:s',time());
-        if(DB::table('user_address')->insert($info)){
-            return redirect('/address')->with('success','添加成功');
-        }else{
-            return  back()->with('error','添加失败');
+
+        //执行添加
+        $data=$request->except('_token');
+        $data['status']=0;
+        //入库
+        if(DB::table("node")->insert($data)){
+            return redirect("/auth")->with("success","添加成功");
         }
     }
 

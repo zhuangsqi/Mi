@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-class PhoneRegisterController extends Controller
+use DB;
+class AdmincartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class PhoneRegisterController extends Controller
      */
     public function index()
     {
-        
+        //加载列表视图
+        return view("Admin.Cart.index");
     }
 
     /**
@@ -24,7 +25,8 @@ class PhoneRegisterController extends Controller
      */
     public function create()
     {
-        //
+        //加载购物车添加页面
+        return view("Admin.Cart.add");
     }
 
     /**
@@ -35,7 +37,11 @@ class PhoneRegisterController extends Controller
      */
     public function store(Request $request)
     {
-        echo '手机注册';
+       $data = $request->except('_token');
+       //执行入库
+       if(DB::table('admin_cart')->insert($data)){
+            return redirect("/cart")->with("success","添加成功");
+       }
     }
 
     /**
@@ -46,7 +52,7 @@ class PhoneRegisterController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**

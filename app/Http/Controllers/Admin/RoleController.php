@@ -25,7 +25,7 @@ class RoleController extends Controller
         $auth = DB::table("node")->get();
         //获取当前角色已有的权限信息
         $data=DB::table("role_node")->where("rid","=",$id)->get();
-        $nid = array();
+       $nid = array();
         if(count($data)){
             //遍历
             foreach($data as $key=>$value){

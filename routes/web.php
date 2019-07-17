@@ -12,68 +12,52 @@
 */
 /******************************************************* 后台 ***************************************************/
 
+//登录和退出
+Route::resource("/adminlogin","Admin\AdminLoginController");
 
 
+	//模板继承
+	Route::resource("/admin","Admin\AdminController");
+	//后台的会员模块
+	Route::resource("/adminuser","Admin\UserController");
+	//后台会员信息的修改
+	Route::post("/user","Admin\UserController@user");
+	//后台无线分类模块
+	Route::resource("/admincates","Admin\catesController");
+	//后台管理员模块
+	Route::resource("/adminusers","Admin\AdminuserController");
+	//分配角色
+	Route::get("/adminrole/{id}","Admin\AdminuserController@role");
+	//保存角色
+	Route::post("/saverole","Admin\AdminuserController@saverole");
+	//角色管理
+	Route::resource("/adminroles","Admin\RoleController");
+	//分配权限
+	Route::get("/adminauth/{id}","Admin\RoleController@adminauth");
+	//保存权限
+	Route::post("/saveauth","Admin\RoleController@saveauth");
+	//权限管理
+	Route::resource("/auth","Admin\AuthController");
+	//修改管理员密码
+	Route::resource("/adminpwd","Admin\AdminuserController@gedit");
+	//后台商品管理模块
+	Route::resource("/adminproduct","Admin\ProductController");
+	//修改商品的模块
+	Route::resource("/xiugai","Admin\ProductController@xiugai");
+	//后台公告模块
+	Route::resource("/article","Admin\ArticleController");
+	//快递
+	Route::resource("/express","Admin\ExpressController");
+	//后台购物车管理
+	Route::resource("/cart","Admin\AdmincartController");
+
+	//后台轮播图模块
+	Route::resource("/lbt","Admin\LbtController");
+	//后台无限分类模块
+	Route::resource("/admincates","Admin\catesController");
+	
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//模板继承
-Route::resource("/admin","Admin\AdminController");
-//后台轮播图模块
-Route::resource("/lbt","Admin\LbtController");
-//后台无限分类模块
-Route::resource("/admincates","Admin\catesController");
 
 
 
@@ -123,6 +107,7 @@ Route::group(['middleware'=>'homelogin'],function(){
 	Route::resource('/cart','Home\CartController');
 	//收货地址
 	Route::resource('/address','Home\AddressController');
+	Route::get('/district','Home\AddressController@district');
 
 });
 

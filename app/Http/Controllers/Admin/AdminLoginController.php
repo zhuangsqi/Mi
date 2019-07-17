@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use DB;
 use Hash;
 
@@ -20,8 +19,11 @@ class AdminLoginController extends Controller
     public function index(Request $request)
     {
         //退出
-        //销毁session
         
+        //销毁session
+        $request->session()->pull("adminname");
+        //删除权限
+        $request->session()->pull("nodelist");
         //跳转登录界面
         return redirect("/adminlogin/create");
     }
@@ -42,17 +44,58 @@ class AdminLoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public function store(Request $request)
     {
-        //检测当前登录的管理员和密码是否在数据表里
-        $name = $request->input("name");
-        $password = $request->input("password");
+        //检测当前登录的管理员和密码是否在数据表里(管理员)
+        $name=$request->input("name");
+        $password=$request->input("password");
         //检测管理员名字
-        $info = DB::table("admin_users")->where("name","=",$name)->first();
+        $info=DB::table("admin_users")->where("name","=",$name)->first();
         if($info){
-            
+            // echo "管理员ok";
+            //检测密码
+            if(Hash::check($password,$info->password)){
+                // echo "ok";
+                //把登录的管理员存储在session
+                session(['adminname'=>$name]);
+                //1.获取当前登录用户的所有权限信息
+                $list=DB::select("select n.name,n.mname,n.aname from user_role as ur,role_node as rn,node as n where ur.rid=rn.rid and rn.nid=n.id and uid={$info->id}");
+                // dd($list);
+                //2.初始化权限信息  让所有管理员都可以访问到后台首页 Admin控制器名字 index方法
+                $nodelist['AdminController'][]="index";
+                // dd($nodelist);
+                // //遍历
+                foreach($list as $key=>$value){
+                    //把权限写入到$nodelist
+                    $nodelist[$value->mname][]=$value->aname;
+                    // dd($nodelist);
+                    //如果有create方法 加入store方法
+                    if($value->aname=="create"){
+                        $nodelist[$value->mname][]="store";
+                    }
+
+                    //如果有edit方法 加入update
+                    if($value->aname=="edit"){
+                        $nodelist[$value->mname][]="update";
+
+                    }
+                }               
+
+                // dd($nodelist);
+                //3.把初始化后的当前登录用户的权限信息写入session
+                session(['nodelist'=>$nodelist]);
+                // dd($nodelist);
+                return redirect("/admin")->with("success","登录成功");
+            }else{
+                return back()->with("error","密码有误");
+            }
+        }else{
+            return back()->with("error","管理员有误");
         }
+
     }
+
+
 
     /**
      * Display the specified resource.
@@ -60,7 +103,7 @@ class AdminLoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+     public function show($id)
     {
         //
     }

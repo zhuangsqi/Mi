@@ -97,29 +97,42 @@
 		</div>
 		@foreach($cate as $val)
 		<div class="peijian w">
-			
-			<div class="biaoti center">{{$val->name}}</div>
+
+			<div class="biaoti center">
+				<div class="fl">{{$val->name}}</div>
+				@foreach($val->suv as $rows)
+				<div class="fr">{{$rows->name}}</div>
+				@endforeach
+				<div class="clear"></div>
+			</div>
+			<div class></div>
 			<div class="main center">
 				<div class="content">
 					<div class="remen fl"><a href=""><img src="/static/Home/image/peijian1.jpg"></a>
 					</div>
-					@foreach($val->suv as $rows)
+					@foreach($shop as $s)
+					@foreach($s as $ss)
+					@if($ss->cid == $val->id)
 					<div class="remen fl">
 						<div class="xinpin"><span>新品</span></div>
-						<div class="tu"><a href=""><img src="/static/Home/image/peijian2.jpg"></a></div>
-						<div class="miaoshu"><a href="">{{$rows->name}}</a></div>
-						<div class="jiage">49元</div>
+						<div class="tu"><a href="/home/{{$ss->aid}}"><img src="/uploads/product/{{$ss->logo}}" width="160"></a></div>
+						<div class="miaoshu"><a href="">{{$ss->aname}}</a></div>
+						<div class="jiage">{{$ss->money}}元</div>
 						<div class="pingjia">372人评价</div>
 						<div class="piao">
 							<a href="">
-								<span>发货速度很快！很配小米6！</span>
-								<span>来至于mi狼牙的评价</span>
+								<span>{{$ss->goods}}</span>
+								<span>点击查看详情</span>
 							</a>
 						</div>
 					</div>
+					@endif
+					@endforeach
 					@endforeach
 					<div class="clear"></div>
-				</div>			
+				</div>
+				
+				<div class="clear"></div>			
 			</div>
 			
 		</div>

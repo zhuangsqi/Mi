@@ -28,7 +28,14 @@ class IndexController extends Controller
     public function index(Request $request)
     {   
         $cate = self::getCatesBypid(0);
-        return view('Home.Index.index',['cate'=>$cate]);
+
+        $cates=DB::table('cates')->where('pid','=',0)->get();
+      
+        foreach($cates as $row){
+            $shop[] = DB::table("admin_product")->join("cates","admin_product.cate_id","=","cates.id")->select("admin_product.id as aid","admin_product.name as aname","admin_product.logo","admin_product.cate_id","admin_product.goods","admin_product.money","admin_product.amount","admin_product.uid","cates.id as cid","cates.name as cname")->where('admin_product.cate_id','=',$row->id)->get();
+        }
+       
+        return view('Home.Index.index',['cate'=>$cate,'shop'=>$shop]);
         
     }
 
@@ -50,7 +57,7 @@ class IndexController extends Controller
      */
     public function store(HomeUserRequest $request)
     {
-       
+      
     }
 
     /**
@@ -61,7 +68,9 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        //
+        $info=DB::table('admin_product')->where('id','=',$id)->first();
+       
+        return view('Home.Index.info',['info'=>$info]);
     }
 
     /**

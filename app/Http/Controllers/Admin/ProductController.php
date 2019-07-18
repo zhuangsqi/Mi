@@ -17,7 +17,7 @@ class ProductController extends Controller
         //获取产品列表信息
         // $data = DB::table("admin_product")->get();
         //关联两表查询数据 cates 和admin_product
-        $data = DB::table("admin_product")->join("cates","admin_product.uid","=","cates.id")->select("admin_product.id as aid","admin_product.name as aname","admin_product.logo","admin_product.cate_id","admin_product.goods","admin_product.money","admin_product.amount","admin_product.uid","cates.id as cid","cates.name as cname")->get();
+        $data = DB::table("admin_product")->join("cates","admin_product.cate_id","=","cates.id")->select("admin_product.id as aid","admin_product.name as aname","admin_product.logo","admin_product.cate_id","admin_product.goods","admin_product.money","admin_product.amount","admin_product.uid","cates.id as cid","cates.name as cname")->get();
         //加载产品列表
         return view("Admin.Adminproduct.index",['data'=>$data]);
     }

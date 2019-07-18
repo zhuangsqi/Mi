@@ -14,7 +14,22 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('Home.Cart.cart');
+        $cart=session('cart');
+        $data1=array();
+        if(count($cart)){
+            foreach($cart as $key=>$value){
+                $info=DB::table('admin_product')->where('id','=',$value['id'])->first();
+                $data['id']=$value['id'];
+                $data['num']=$value['num'];
+                $data['name']=$info->name;
+                $data['goods']=$info->goods;
+                $data['logo']=$info->logo;
+                $data['money']=$info->money;
+                $data1[]=$data;
+            } 
+        }
+        
+        return view('Home.Cart.cart',['data1'=>$data1]);
     }
 
     /**
@@ -35,7 +50,9 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->except('_token');
+        $request->session()->push('cart',$data);
+        return redirect('/cart');
     }
 
     /**

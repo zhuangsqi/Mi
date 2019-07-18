@@ -69,6 +69,7 @@ Route::resource("/adminlogin","Admin\AdminLoginController");
 
 //前台继承
 Route::resource('/','Home\Indexcontroller');
+Route::resource('/home','Home\Indexcontroller');
 //邮箱注册
 Route::resource('/register','Home\RegisterController');
 //注册校验码

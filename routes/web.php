@@ -106,10 +106,19 @@ Route::group(['middleware'=>'homelogin'],function(){
 	Route::resource('/user','Home\Usercontroller');
 	//购物车
 	Route::resource('/cart','Home\CartController');
+	//删除购物车所有商品\
+	Route::get('/alldelcart','Home\CartController@alldelcart');
+	//减
+	Route::get('/cartupdatee','Home\CartController@cartupdatee');
+	//加
+	Route::get('/cartadd','Home\CartController@cartadd');
+	//购物车总金额和总商品数量
+	Route::get('/carttot','Home\CartController@carttot');
 	//收货地址
 	Route::resource('/address','Home\AddressController');
 	Route::get('/district','Home\AddressController@district');
-
+	//结算页面
+	
 });
 
 

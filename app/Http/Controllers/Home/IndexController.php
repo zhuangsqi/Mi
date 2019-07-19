@@ -109,6 +109,7 @@ class IndexController extends Controller
 
     //退出登录
     public function uplogin(Request $request){
+        $request->session()->pull('cart');
         $request->session()->pull('info');
         return redirect('/');
     }

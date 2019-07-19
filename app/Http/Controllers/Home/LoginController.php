@@ -99,7 +99,7 @@ class LoginController extends Controller
         if($info){      
             if(Hash::check($password,$info->password)){
                 if($info->status == 1){
-                    session(['name'=>$info->name]);
+                    session(['info'=>$info]);
                     return redirect('/');
                 }else{
                     return back()->with('error','账号没有激活!!!');

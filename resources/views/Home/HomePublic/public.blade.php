@@ -7,11 +7,15 @@
 		<link rel="stylesheet" type="text/css" href="/static/Home/css/style.css">
     <script src="/static/Home/js/base.min.js"></script>
 		<script src="/static/Home/js/H-ui.js"></script>
+    <script src="/static/Home/js/jquery-1.8.3.min.js"></script>
+    <script src="/static/Home/js/scroll.js"></script>
 		<link rel="stylesheet" href="/static/Home/css/base.min.css" /> 
+
   	<!--<link rel="stylesheet" href="/static/Home/css/index.min.css" />-->
 	</head>
 	<body>
 	<!-- start header -->
+    <a name="first"></a>
   <div class="site-topbar"> 
    <div class="container"> 
     <div class="topbar-nav"> 

@@ -1,10 +1,81 @@
 @extends('Home.HomePublic.public')
 @section('main')
 	<!-- start banner_y -->
+		<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
 
+		.container {
+			width: 1226px;
+			margin: 50px auto;
+		}
+
+
+		.scroll {
+			width: 1226px;
+			height:300px;
+			border: 0px solid #ccc;
+			overflow: hidden;
+		}
+
+		.scroll ul {
+			white-space: nowrap;
+		}
+
+		.scroll ul li {
+			display: inline-block;
+			margin: 10px;
+		}
+
+		.scroll ul img {
+			width:170px;
+			height: 200px;
+			vertical-align: top;
+		}
+		.bs1:hover{
+			background:url('/static/Home/image/74c4fcb4475af8308e9a670db9c01fdf.png') no-repeat center !important;
+			cursor:pointer;
+		}
+		.bs2:hover{
+			background:url('/static/Home/image/41f858550f42eb1770b97faf219ae215.png') no-repeat center !important;
+			cursor:pointer;
+		}
+		.bs3:hover{
+			background:url('/static/Home/image/95fbf0081a06eec7be4d35e277faeca0.png') no-repeat center !important;
+			cursor:pointer;
+		}
+		.bs4:hover{
+			background:url('/static/Home/image/5e9f2b1b0da09ac3b3961378284ef2d4.png') no-repeat center !important;
+			cursor:pointer;
+		}
+		.bs5:hover{
+			background:url('/static/Home/image/692a6c3b0a93a24f74a29c0f9d68ec71.png') no-repeat center !important;
+			cursor:pointer;
+		}
+		.bs6:hover{
+			background:url('/static/Home/image/totop_hover.png') no-repeat center !important;
+			cursor:pointer;
+		}
+	</style>
+	<div style="width:84px;height:430px;position:fixed;display:block;margin-left:1815px">
+		
+		<div class="bs1" style="width:84px;height:70px;background:url('/static/Home/image/98a23aae70f25798192693f21c4d4039.png') no-repeat center;"><a href=""></a></div>
+
+		<div class="bs2" style="width:84px;height:70px;background:url('/static/Home/image/55cad219421bee03a801775e7309b920.png') no-repeat center;"><a href=""></a></div>
+
+		<div class="bs3" style="width:84px;height:70px;background:url('/static/Home/image/12eb0965ab33dc8e05870911b90f3f13.png') no-repeat center;"><a href=""></a></div>
+
+		<div class="bs4" style="width:84px;height:70px;background:url('/static/Home/image/4f036ae4d45002b2a6fb6756cedebf02.png') no-repeat center;"><a href=""></a></div>
+
+		<div class="bs5" style="width:84px;height:70px;background:url('/static/Home/image/d7db56d1d850113f016c95e289e36efa.png') no-repeat center;"><a href=""></a></div>
+
+		<a href="#first"><div class="bs6" style="width:84px;height:70px;background:url('/static/Home/image/totop.png') no-repeat center;margin-top:10px;"></div></a>
+
+	</div>
 		<div class="banner_y center">
 			<img src="../../../uploads/pic1.jpg" id="imgid" align="right" style="position:absolute;z-index:-1;width:1226px;height:460px;">
-			
 			<div class="nav">				
 				<ul>
 					@foreach($cate as $row)
@@ -38,7 +109,7 @@
 				</ul>
 			</div>
 		</div>	
-
+		
 		<div class="sub_banner center">
 			<div class="sidebar fl">
 				<div class="fl"><a href=""><img src="/static/Home/image/hjh_01.gif"></a></div>
@@ -56,6 +127,7 @@
 
 
 		</div>
+		
 	<!-- end banner -->
 	<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 
@@ -95,6 +167,81 @@
 					<div class="jiage">3599元起</div>
 				</div>
 				<div class="clear"></div>
+			</div>
+		</div>
+
+		<!-- <div class="sub_banner center" id="add" style="width:1226px;height:260px">
+			<div class="sidebar fl" style="width:190px;height:260px">
+				<a href=""><img src="./static/Home/image/1.png"></a>
+			</div>
+
+			<ul>
+				<div class="sub_banner fr" style="width:1036px;height:260px;margin-top:0px;">
+					<div class="sidebar fl" style="width:190px;height:260px;margin-right:16px;">
+						<li>
+							<a href="">
+								<span align="center" style="width:190px;height:30px;display:inline-block;">11111</span>
+								<img src="" width="190px" height="230px">
+							</a>
+						</li>
+					</div>
+					<div class="sidebar fl" style="width:190px;height:260px;margin-right:16px;">
+						<li>
+							<a href="">			
+								<img src="" width="190px" height="230px">
+								<span align="center" style="width:190px;height:30px;position:absolute;">11111</span>
+							</a>
+						</li>
+					</div>
+					<div class="sidebar fl" style="width:190px;height:260px;margin-right:16px;">
+						<li>
+							<a href="">
+								<span align="center" style="width:190px;height:30px;display:inline-block;">11111</span>
+								<img src="" width="190px" height="230px">
+							</a>
+						</li>
+					</div>
+					<div class="sidebar fl" style="width:190px;height:260px;margin-right:16px;">
+						<li>
+							<a href="">			
+								<img src="" width="190px" height="230px">
+								<span align="center" style="width:190px;height:30px;position:absolute;">11111</span>
+							</a>
+						</li>
+					</div>
+					<div class="sidebar fl" style="width:190px;height:260px;margin-right:16px;">
+						<li>
+							<a href="">
+								<span align="center" style="width:190px;height:30px;display:inline-block;">11111</span>
+								<img src="" width="190px" height="230px">
+							</a>
+						</li>
+					</div>
+				</div>
+		</ul>
+		</div> -->
+		<style>
+			.imga{
+				position:relative;
+			}
+			.as{
+				position:relative;
+				bottom: -200px;
+				right: 115px;
+			}
+
+		</style>
+		<div class="container">
+			<div class="scroll">
+				<ul>
+					<li><a href=""><img src="/static/Home/image/pinpai1.png" class="imga" alt=""><span class="as">小米CC9</span></a></li>
+					<li><a href=""><img src="/static/Home/image/pinpai5.png" class="imga" alt=""><span class="as">小米游戏本</span></a></li>
+					<li><a href=""><img src="/static/Home/image/pms_1560230039.18218237.jpg" class="imga" alt=""><span class="as">小爱同学</span></a></li>
+					<li><a href=""><img src="/static/Home/image/pinpai2.png" class="imga" alt=""><span class="as">小米9</span></a></li>
+					<li><a href=""><img src="/static/Home/image/pinpai4.png" class="imga" alt=""><span class="as">小米电视机</span></a></li>
+					<li><a href=""><img src="/static/Home/image/qianzhao.jpg" class="imga" alt=""><span class="as">小米路由器</span></a></li>
+					<li><a href=""><img src="/static/Home/image/pms_1560510426.98522616.jpg" class="imga" alt=""><span class="as">小米平衡车</span></a></li>
+				</ul>
 			</div>
 		</div>
 		<div class="peijian w">
@@ -186,9 +333,11 @@
 						<div class="liulangengduo"><a href=""><img src="/static/Home/image/liulangengduo.png" alt=""></a></div>					
 					</div>
 					<div class="clear"></div>
-				</div>				
+				</div>	
+
 			</div>
 		</div>
+		
 		<script>
 			img = document.getElementById('imgid');
 			num = 0;
@@ -199,6 +348,15 @@
 					num = 0;
 				}
 			},3000)
+
 		</script>
+		<script type="text/javascript">
+			$(function () {
+				$('.scroll').scroll({
+					speed: 80, //数值越大，速度越快
+					direction: 'horizantal'
+				});
+			});
+	</script>
 @endsection
 @section('title','小米商城')

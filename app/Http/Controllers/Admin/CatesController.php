@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Model\Cates;
 class CatesController extends Controller
 {
     /**
@@ -27,9 +28,33 @@ class CatesController extends Controller
             $len=count($arr)-1;
             //str_repeat 重复字符串
             $cates[$key]->name=str_repeat("--|",$len).$value->name;
-        }
-        return view("Admin.Cates.index",['cates'=>$cates,'request'=>$request->all()]);
 
+            $tot = Cates::count();
+
+            $rev = 2;
+            $maxpage = ceil($tot/$rev);
+
+             $page = $request->input('page');
+                if(empty($page)){
+                    $page=1;
+                }
+                //获取偏移量
+                $offset = ($page-1)*$rev;
+
+            $data = Cates::offset($offset)->limit($rev)->get();
+
+            if($request->ajax()){
+            //加载模板
+            return view("Admin.Cates.ajaxpage",['data'=>$data]);
+             }
+
+             for($i=1;$i<=$maxpage;$i++){
+            //给数组赋值
+            $pp[$i]=$i;    
+        }
+        }
+        return view("Admin.Cates.index",['cates'=>$cates,'request'=>$request->all(),'pp'=>$pp,'data'=>$data,'tot'=>$tot]);
+        
     }
 
     /**
@@ -101,7 +126,9 @@ class CatesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cates = DB::table("cates")->where('id','=',$id)->first();
+
+        return view("Admin.Cates.edit");
     }
 
     /**

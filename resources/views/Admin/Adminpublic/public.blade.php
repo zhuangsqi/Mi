@@ -125,7 +125,18 @@
 					<li><a data-href="article-list.html" data-title="资讯管理" href="/article/create">公告添加</a></li>
 				</ul>
 			</dd>
-		</dl>
+	</dl>
+	<dl id="menu-article">
+		<dt><i class="Hui-iconfont">&#xe616;</i> 有情连接管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+		<dd>
+			<ul>
+				<li><a data-href="article-list.html" data-title="资讯管理" href="/link">连接管理</a></li>
+			</ul>
+			<ul>
+				<li><a data-href="article-list.html" data-title="资讯管理" href="/link/create">连接添加</a></li>
+			</ul>
+		</dd>
+	</dl>
 </div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>

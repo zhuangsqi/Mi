@@ -48,6 +48,7 @@
 			</div>
 		</div>
 		<div class="row cl">
+		{{method_field("PUT")}}	
 		{{csrf_field()}}
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">

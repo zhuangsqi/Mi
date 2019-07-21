@@ -8,7 +8,8 @@
     <script src="/static/Home/js/base.min.js"></script>
 		<!--<script src="/static/Home/js/H-ui.js"></script>-->
     <script src="/static/Home/js/jquery-1.7.2.min.js"></script>
-		<link rel="stylesheet" href="/static/Home/css/base.min.css" /> 
+    <link rel="stylesheet" href="/static/Home/css/base.min.css" /> 
+		<link rel="stylesheet" href="/static/Home/css/checkout.min.css" /> 
   	<!--<link rel="stylesheet" href="/static/Home/css/index.min.css" />-->
 	</head>
 	<body>

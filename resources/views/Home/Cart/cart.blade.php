@@ -142,6 +142,19 @@
 			$('#nums').html(data.nums);
 		},'json');
 	});
+
+	//结算按钮
+	$("input[name='jiesuan']").click(function(){
+		if($("input[name='items']").is(':checked')){
+			$.get("/jiesuan",{arr:arr},function(data){
+				if(data){
+					window.location="/insert";
+				}
+			},'json');
+		}else{
+			alert('请至少选中一件商品结算');
+		}
+	});
 </script>
 @endsection
 @section('title','我的购物车-小米商城')

@@ -117,8 +117,19 @@ Route::group(['middleware'=>'homelogin'],function(){
 	//收货地址
 	Route::resource('/address','Home\AddressController');
 	Route::get('/district','Home\AddressController@district');
+	//结算按钮
+	Route::get('/jiesuan','Home\OrdersController@jiesuan');
 	//结算页面
-	
+	Route::any('/insert','Home\OrdersController@insert');
+	//结算页面添加收货地址
+	Route::get('/tianjia','Home\OrdersController@tianjia');
+	Route::post('/dotianjia','Home\OrdersController@dotianjia');
+	//选择收货地址
+	Route::any('/choose','Home\OrdersController@choose');
+	//下单
+	Route::post('/order/create','Home\OrdersController@create');
+	//支付完毕跳转商户界面
+	Route::get('/returnurl','Home\OrdersController@returnurl');
 });
 
 

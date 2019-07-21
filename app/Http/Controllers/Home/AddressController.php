@@ -15,7 +15,7 @@ class AddressController extends Controller
     public function index()
     {
         $id=session('info')->id;
-        dd(session('info'));
+        
         $info=DB::table('user_address')->where('u_id','=',$id)->get();
         return view('Home.Address.index',['info'=>$info]);
     }

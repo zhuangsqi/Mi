@@ -14,7 +14,7 @@
 				<li><a href="">变焦双摄</a></li>
 				<li>|</li>
 				<li><a href="">设计</a></li>
-				<li>|</li>
+				<li>|</li> 
 				<li><a href="">参数</a></li>
 				<li>|</li>
 				<li><a href="">F码通道</a></li>

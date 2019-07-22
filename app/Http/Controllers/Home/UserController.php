@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {   
-        $name = session('info')->name;
-        $data = Users::where('name','=',$name)->first();
+        $id = session('info')->id;
+        $data = Users::where('id','=',$id)->first();
         return view('Home.User.User',['data'=>$data]);
     }
 
@@ -97,10 +97,6 @@ class UserController extends Controller
         }
 
         if(Users::where('id','=',$id)->update($data)){
-
-            /******* 问题1 ********/
-
-            session(['info'=>$info]);
             return redirect('/user');
         }else{
             return back();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Models\Orders;
 class OrdersController extends Controller
 {
     //结算页面
@@ -138,6 +139,72 @@ class OrdersController extends Controller
         //修改订单状态
         $data['status']="2";
         DB::table("orders")->where("id","=",$order_id)->update($data);
-    	return view('Home.Orders.success',['tot'=>$tot,'address'=>$address]);
+    	return view('Home.Orders.success',['tot'=>$tot,'address'=>$address,'order_id'=>$order_id]);
+    }
+
+    //我的订单(所有)
+    public function myorder(Request $request){
+        $id=session('info')->id;
+        $order=Orders::where('user_id','=',$id)->get();
+        foreach ($order as $key => $value) {
+            $shop=DB::table('orders_goods')->where('order_id','=',$value->id)->get();
+            foreach ($shop as $key) {
+                $arr=DB::table('admin_product')->where('id','=',$key->shop_id)->first();
+                $arrs['id']=$arr->id;
+                $arrs['name']=$arr->name;
+                $arrs['money']=$arr->money;
+                $arrs['logo']=$arr->logo;
+                $arrs['num']=$key->num;  
+                $arrs['order_id']=$key->order_id;  
+            }
+            $arrs['order_num']=$value->order_num;
+            $arrs['status']=$value->status;
+            $aa[]=$arrs;
+        }
+        
+        return view('Home.Orders.myorder',['aa'=>$aa]);
+    }
+
+    //订单详情
+    public function orderdetail(Request $request){
+        $order_id=$_GET['order_id'];
+        $order=Orders::where('id','=',$order_id)->first();
+        //获取状态值
+        $orders=DB::table('orders')->where('id','=',$order_id)->first();
+        $status=$orders->status;
+        //获取订单商品
+        $shop=DB::table('orders_goods')->where('order_id','=',$order_id)->get();
+        $tot="";
+        foreach ($shop as $key) {
+            $arr=DB::table('admin_product')->where('id','=',$key->shop_id)->first();
+            $arrs['id']=$arr->id;
+            $arrs['name']=$arr->name;
+            $arrs['money']=$arr->money;
+            $arrs['logo']=$arr->logo;
+            $arrs['num']=$key->num;
+            $tot+=$arr->money*$key->num;
+            $aa[]=$arrs;
+        }
+
+        $address=DB::table('user_address')->where('id','=',$order->address_id)->first();
+        return view('Home.Orders.orderdetail',['order'=>$order,'address'=>$address,'status'=>$status,'aa'=>$aa,'tot'=>$tot]);
+    }
+
+    //确认收货
+    public function receipt(Request $request){
+        $id=$request->id;
+        
+        $info=DB::table('orders')->where('id','=',$id)->first();
+        $data['status']=4;
+        if($info->status < 3){
+            echo 1;
+        }else{
+            if(DB::table('orders')->where('id','=',$id)->update($data)){
+                echo 2;
+            }else{
+                echo 3;
+            }
+        }
+
     }
 }

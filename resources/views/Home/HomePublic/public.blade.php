@@ -6,11 +6,12 @@
 		<title>@yield("title")</title>
 		<link rel="stylesheet" type="text/css" href="/static/Home/css/style.css">
     <script src="/static/Home/js/base.min.js"></script>
-		<!--<script src="/static/Home/js/H-ui.js"></script>-->
     <script src="/static/Home/js/jquery-1.7.2.min.js"></script>
+    
     <link rel="stylesheet" href="/static/Home/css/base.min.css" /> 
-		<link rel="stylesheet" href="/static/Home/css/checkout.min.css" /> 
-  	<!--<link rel="stylesheet" href="/static/Home/css/index.min.css" />-->
+    <link rel="stylesheet" href="/static/Home/css/checkout.min.css"/> 
+    <link rel="stylesheet" href="/static/Home/css/main.min.css"/> 
+		<link rel="stylesheet" href="/static/Home/css/order-view.min.css"/> 
 	</head>
 	<body>
 	<!-- start header -->
@@ -38,8 +39,6 @@
      <a rel="nofollow" href="" target="_blank">协议规则</a>
      <span class="sep">|</span>
      <a rel="nofollow" href="" target="_blank" id="J_downloadapp">下载app</a>
-     <span class="sep">|</span>
-     <a rel="nofollow" href="" data-toggle="modal">Select Region</a> 
     </div> 
     <div class="topbar-cart" id="J_miniCartTrigger"> 
      <a rel="nofollow" class="cart-mini" id="J_miniCartBtn" href="/cart"><i class="iconfont"></i>购物车<span class="cart-mini-num J_cartNum"></span></a> 
@@ -58,7 +57,7 @@
       <div class="user_name"><a id="user_name" class="">{{session('info')->name}}</a>
         <div id="user_name_none" class="user_name_none">
           <li><a href="/user">个人中心</a></li>
-          <li><a href="">我的订单</a></li>
+          <li><a href="/myorder">我的订单</a></li>
           <li><a href="/repwd">修改密码</a></li>
           <li><a href="/uplogin">退出登录</a></li>
         </div>

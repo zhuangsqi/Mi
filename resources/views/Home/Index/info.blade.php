@@ -1,8 +1,5 @@
 @extends('Home.HomePublic.public')
 @section('main')
-<style>
-
-</style>
 <!-- xiangqing -->
 	<form action="/cart" method="post">
 	<div class="xiangqing">

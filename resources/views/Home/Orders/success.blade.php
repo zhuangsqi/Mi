@@ -43,8 +43,11 @@
    </div> 
    <div class="section-bar clearfix"> 
     <div class="fr">
-      <a href="/" class="btn btn-primary">继续购物</a>
-      <a href="" class="btn  btn-return">查看订单</a>
+      <form action="/orderdetail" method="get">
+        <a href="/" class="btn btn-primary">继续购物</a>
+        <input type="hidden" name="order_id" value="{{$order_id}}">
+        <input type="submit" value="订单详情" class="btn  btn-return">
+      </form>
     </div> 
    </div> 
   </div>

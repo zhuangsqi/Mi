@@ -130,6 +130,13 @@ Route::group(['middleware'=>'homelogin'],function(){
 	Route::post('/order/create','Home\OrdersController@create');
 	//支付完毕跳转商户界面
 	Route::get('/returnurl','Home\OrdersController@returnurl');
+	//我的订单
+	Route::get('/myorder','Home\OrdersController@myorder');
+	//订单详情
+	Route::get('/orderdetail','Home\OrdersController@orderdetail');
+	//确认收货
+	Route::get('/receipt','Home\OrdersController@receipt');
+	
 });
 
 

@@ -15,7 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         //获取产品列表信息
-        $data = DB::table("admin_product")->get();
+        // $data = DB::table("admin_product")->get();
+        //关联两表查询数据 cates 和admin_product
+        $data = DB::table("admin_product")->join("cates","admin_product.uid","=","cates.id")->select("admin_product.id as aid","admin_product.name as aname","admin_product.logo","admin_product.cate_id","admin_product.goods","admin_product.money","admin_product.amount","admin_product.uid","cates.id as cid","cates.name as cname")->get();
         //加载产品列表
         return view("Admin.Adminproduct.index",['data'=>$data]);
     }
@@ -27,8 +29,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+        //获取所有的类别
+        $cate = CatesController::getCates();
         //加载产品添加视图
-        return view("Admin.Adminproduct.add");
+        return view("Admin.Adminproduct.add",['cate'=>$cate]);
     }
 
     /**
@@ -70,6 +74,26 @@ class ProductController extends Controller
         }
         
     }
+    //后台商品列表修改
+    public function productedit(Request $request, $id){
+        $data = $request->except('_token');
+        $info = DB::table("admin_product")->where("id","=",$id)->first();
+        //获取上传文件后缀
+        $hou = $request->file("logo")->getClientOriginalExtension();
+        //初始化名字
+         $name = time();
+         //移动到指定的目录下
+         $request->file("logo")->move("./uploads/product",$name.".".$hou);
+         $data['logo'] = $name.".".$hou;
+         
+
+         if(DB::table('admin_product')->where("id","=",$id)->update($data)){
+             unlink("./uploads/product/".$info->logo);
+            return redirect("/adminproduct")->with("success","修改成功");
+         }else{
+            return back()->with("error","修改失败");
+         }
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -79,7 +103,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        echo "1";
+        //查询要修改的商品信息
+        $info = DB::table("admin_product")->where("id","=",$id)->first();
+        //加载修改视图
+        return view("Admin.Adminproduct.edit",['info'=>$info]);
     }
 
     /**
@@ -93,9 +120,7 @@ class ProductController extends Controller
     {
         //
     }
-    public function xiugai(){
-        echo "1111";
-    }
+
     /**
      * Remove the specified resource from storage.
      *

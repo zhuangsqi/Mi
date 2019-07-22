@@ -8,7 +8,6 @@ use DB;
 use App\Model\Userss;
 class AuthController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +60,14 @@ class AuthController extends Controller
      */
     public function show($id)
     {
-        //
+        //删除权限
+        $data = DB::table("node")->where("id","=",$id)->first();
+        //执行删除操作
+        if(DB::table("node")->where("id","=",$id)->delete()){
+            return redirect("/auth")->with("success","删除成功");
+        }else{
+            return back()->with("error","删除失败");
+        }
     }
 
     /**
@@ -72,7 +78,9 @@ class AuthController extends Controller
      */
     public function edit($id)
     {
-        //
+        //根据id查出要修改的信息
+        $info = DB::table("node")->where("id","=",$id)->first();
+        return view("Admin.Auth.edit",['info'=>$info]);
     }
 
     /**
@@ -86,7 +94,6 @@ class AuthController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -95,6 +102,6 @@ class AuthController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

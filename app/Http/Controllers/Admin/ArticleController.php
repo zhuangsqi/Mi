@@ -10,6 +10,7 @@ use Config;
 use App\Model\Articles;
 //导入OSS类
 use App\Services\OSS;
+use DB;
 class ArticleController extends Controller
 {
     /**
@@ -19,11 +20,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $data = Articles::get();
-        //加载公告列表
-        return view("Admin.Article.index",['data'=>$data]);
+         $data = Articles::get();
+         //加载公告列表
+         return view("Admin.Article.index",['data'=>$data]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -52,7 +52,7 @@ class ArticleController extends Controller
             $ext = $request->file("face")->getClientOriginalExtension();
             $newfile = $name.".".$ext;
             $filepath = $file->getRealPath();
-            //OSS上传
+            //OSS上传z
             //$newfile上传到阿里云oss平台下的文件名字
             OSS::upload($newfile,$filepath);
             //裁剪图片
@@ -75,22 +75,16 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         //获取删除的数据
         $info = Articles::where("id","=","$id")->first();
         //删除裁剪后的图
-        unlink($info->face);
+        unlink("/".$info->face);
         if(Articles::where("id","=","$id")->delete()){
         	return redirect("/article")->with("success","删除成功");
         }else{
         	return back()->with("error","删除失败");
         }
-    }
-    //公告下架
-    public function out(Request $request){
-    	dd($_GET);
-    	
     }
     /**
      * Show the form for editing the specified resource.
@@ -100,7 +94,10 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        
+       //查询公告数据
+       $info = DB::table('articles')->where("id","=",$id)->first();
+       //加载修改公告的视图
+       return view("Admin.Article.edit",['info'=>$info]);
     }
 
     /**
@@ -124,5 +121,39 @@ class ArticleController extends Controller
     public function destroy($id)
     {
        
+    }
+    //下架
+    public function xiajia(Request $request){
+    	$id = $request->input('id');
+    	$data = DB::table("articles")->where("id","=",$id)->first();
+        if($data->isshow == 1){
+            $info['isshow'] = 0;
+        }else{
+            $info['isshow'] =1;
+        }
+         if(DB::table("articles")->where("id","=",$id)->update($info)){
+            $info1 = Articles::where("id","=",$id)->first();
+            echo json_encode($info1);
+
+        };
+                    
+        
+    }
+    public function articleedit(Request $request, $id){
+        $data = $request->except('_token');
+         //初始化名字
+        $name = time(); 
+        //获取上传文件后缀
+         $ext = $request->file("face")->getClientOriginalExtension();
+        //移动到指定的目录下
+        $request->file("face")->move("./",$name.".".$ext);
+        $data['face'] = $name.".".$ext;
+        //执行修改
+        if(DB::table("articles")->where("id","=",$id)->update($data)){
+
+            return redirect("/article")->with("success","修改成功");
+        }else{
+            return back()->with("error","修改失败");
+        }
     }
 }

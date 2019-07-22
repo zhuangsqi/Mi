@@ -76,7 +76,6 @@
 				<dt><i class="Hui-iconfont">&#xe60d;</i> 用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 				<dd>
 					<ul>
-						<li><a data-href="member-list.html" data-title="会员列表" href="/adminuser/create">添加用户</a></li>
 						<li><a data-href="member-list.html" data-title="删除的会员" href="/adminuser">用户列表</a></li>
 					</ul>
 				</dd>
@@ -98,7 +97,7 @@
 			</dl>
 		</dl>
 	<dl id="menu-picture">
-			<dt><i class="Hui-iconfont">&#xe613;</i>分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe681;</i> 分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
 					<li><a data-href="picture-list.html" data-title="图片管理" href="/admincates/create">分类添加</a></li>
@@ -107,7 +106,7 @@
 		</dd>
 	</dl>
 	<dl id="menu-picture">
-			<dt><i class="Hui-iconfont">&#xe613;</i>快递管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe669;</i> 快递管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
 					<li><a data-href="picture-list.html" data-title="图片管理" href="/express/create">快递添加</a></li>
@@ -116,11 +115,11 @@
 		</dd>
 	</dl>
 	<dl id="menu-product">
-			<dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe620;</i> 商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="product-brand.html" data-title="品牌管理" href="/adminproduct/create">添加品牌</a></li>
-					<li><a data-href="product-brand.html" data-title="品牌管理" href="/adminproduct">管理品牌</a></li>
+					<li><a data-href="product-brand.html" data-title="品牌管理" href="/adminproduct/create">添加商品</a></li>
+					<li><a data-href="product-brand.html" data-title="品牌管理" href="/adminproduct">管理商品</a></li>
 				</ul>
 			</dd>
 	</dl>
@@ -134,7 +133,49 @@
 					<li><a data-href="article-list.html" data-title="资讯管理" href="/article/create">公告添加</a></li>
 				</ul>
 			</dd>
-		</dl>
+	</dl>
+	<dl id="menu-article">
+			<dt><i class="Hui-iconfont">&#xe613;</i> 轮播图管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="article-list.html" data-title="资讯管理" href="/lbt/create">轮播图添加</a></li>
+				</ul>
+				<ul>
+					<li><a data-href="article-list.html" data-title="资讯管理" href="/lbt">轮播图管理</a></li>
+				</ul>
+			</dd>
+	</dl>
+	<dl id="menu-article">
+			<dt><i class="Hui-iconfont">&#xe670;</i> 友情链接<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="article-list.html" data-title="资讯管理" href="/link/create">友情链接添加</a></li>
+				</ul>
+				<ul>
+					<li><a data-href="article-list.html" data-title="资讯管理" href="/link">友情链接管理</a></li>
+				</ul>
+			</dd>
+	</dl>
+	<dl id="menu-picture">
+			<dt><i class="Hui-iconfont">&#xe687;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="picture-list.html" data-title="图片管理" href="/orders">订单详情</a></li>
+			</ul>
+		</dd>
+	</dl>
+	<dl id="menu-picture">
+			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="picture-list.html" data-title="图片管理" href="/scores">评分管理</a></li>
+			</ul>
+			<ul>
+					<li><a data-href="picture-list.html" data-title="图片管理" href="/scress">屏蔽词管理</a></li>
+			</ul>
+		</dd>
+	</dl>
+</div>
 </div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>

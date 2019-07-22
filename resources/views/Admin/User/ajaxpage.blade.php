@@ -1,4 +1,4 @@
-
+<!-- 
 		<div id="uid">
 		<table class="table table-border table-bordered table-bg">
 			<thead>
@@ -31,8 +31,7 @@
 					<td><img src="./uploads/user/{{$row->face}}" width="100px"></td>
 					<td>{{$row->password}}</td>
 					<td>{{$row->created_at}}</td>
-					<td class="td-manage">
-						
+					<td class="td-manage">	
 						<button title="修改" href="javascript:;" onclick="admin_edit('用户修改','admin-add.html','1','800','500')" class="ml-5" style="text-decoration:none;float:right;margin-right:15px;"><i class="Hui-iconfont">&#xe6df;</i>
 						</button> 
 					
@@ -47,4 +46,4 @@
 			</tbody>
 		</table>
 	</div>
-</div>
+</div> -->

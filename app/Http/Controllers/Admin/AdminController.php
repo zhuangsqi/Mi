@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use DB;
 class AdminController extends Controller
 {
     /**
@@ -25,7 +25,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,8 +35,9 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+
+        
     }
 
     /**
@@ -47,7 +48,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -58,7 +59,6 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -70,7 +70,14 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //权限列表修改
+        $data = $request->except('_token','_method');
+        //执行修改
+        if(DB::table("node")->where("id","=",$id)->update($data)){
+            return redirect("/auth")->with("success","修改成功");
+        }else{
+            return back()->with("error","修改失败");
+        }
     }
 
     /**

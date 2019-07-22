@@ -12,13 +12,10 @@ class CatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        //获取搜索关键词
-        // echo "ssss";
-        $k=$request->input('keyword');
+    public static function getCates(){
+
         //调整类别顺序连贯方法 Raw 原始表达式,防止sql语句注入
-        $cates=DB::table("cates")->select(DB::raw("*,concat(path,',',id)as paths"))->where("name","like","%".$k."%")->orderBy("paths")->get();
+        $cates=DB::table("cates")->select(DB::raw("*,concat(path,',',id)as paths"))->orderBy("paths")->get();
         //遍历数据
         foreach($cates as $key=>$value){
             $path=$value->path;
@@ -29,10 +26,32 @@ class CatesController extends Controller
             //str_repeat 重复字符串
             $cates[$key]->name=str_repeat("--|",$len).$value->name;
         }
-        return view("Admin.Cates.index",['cates'=>$cates,'request'=>$request->all()]);
+        return $cates;
 
     }
-
+    public function index(Request $request){
+        //获取搜索关键词
+        $k=$request->input('keyword');
+        //列表
+        // $cates=DB::select("select *,concat(path,',',id)as paths from cates order by paths");
+        //调整类别顺序连贯方法 Raw 原始表达式,防止sql语句注入
+        $cates=DB::table("cates")->select(DB::raw("*,concat(path,',',id)as paths"))->where("name","like","%".$k."%")->orderBy("paths")->get();
+        //遍历数据
+        foreach($cates as $key=>$value){
+            // echo $value->path."<br>";
+            $path=$value->path;
+            //转换为数组
+            $arr=explode(",",$path);
+            // echo "<pre>";
+            // var_dump($arr);
+            //获取逗号个数
+            $len=count($arr)-1;
+            //str_repeat 重复字符串
+            $cates[$key]->name=str_repeat("--|",$len).$value->name;
+        }
+        // dd($cates);
+        return view("Admin.Cates.index",['cates'=>$cates,'request'=>$request->all()]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -93,7 +112,9 @@ class CatesController extends Controller
      */
     public function edit($id)
     {
-        //
+        //查询修改信息
+        $info = DB::table("cates")->where("id","=","$id")->first();
+        return view("Admin.Cates.edit",['info'=>$info]);
     }
 
     /**
@@ -105,8 +126,19 @@ class CatesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
+
+    public function catesedit(Request $request, $id){
+        $info = $request->except('_token');
+        if(DB::table('cates')->where("id","=",$id)->update($info)){
+            return redirect("/admincates")->with("success","修改成功");
+        }else{
+            return back()->with("error","修改失败");
+        }
+
+    }
+
 
     /**
      * Remove the specified resource from storage.

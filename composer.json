@@ -11,6 +11,7 @@
         "johnlui/aliyun-oss": "~1.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
+        "predis/predis": "^1.1",
         "twbs/bootstrap": "^4.3"
     },
     "require-dev": {

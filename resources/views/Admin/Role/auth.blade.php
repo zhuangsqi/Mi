@@ -1,5 +1,6 @@
 @extends("Admin.AdminPublic.public")
 @section("main")
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 权限管理 <span class="c-gray en">&gt;</span> 分配权限 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <article class="page-container">
 	<form action="/saveauth" method="post" class="form form-horizontal"> 
 		<div class="row cl">

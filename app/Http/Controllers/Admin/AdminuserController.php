@@ -140,7 +140,10 @@ class AdminuserController extends Controller
             return back()->with("error","修改失败");
         }      
     }
-
+    //修改角色
+    public function editrole(){
+        echo "修改角色";
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -149,10 +152,7 @@ class AdminuserController extends Controller
      */
     public function destroy($id)
     {
-        // $name = $_POST['name'];
-        // //前台传过来的值
-        // $data = $request->except(['_token','_method']);        
-        // //加密新密码
-        // $data['password'] = Hash::make($data['password']);
+
     }
+ 
 }

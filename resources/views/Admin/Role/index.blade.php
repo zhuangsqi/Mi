@@ -1,5 +1,6 @@
 @extends("Admin.AdminPublic.public")
 @section("main")
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 权限管理 <span class="c-gray en">&gt;</span> 权限列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 	<div class="text-c">
 		<input type="text" name="" id="" placeholder="角色名称" style="width:250px" class="input-text">
@@ -31,16 +32,14 @@
 					<td>{{$row->name}}</td>
 					<td>{{$row->status}}</td>
 					<td>
-						<form action="/admincates/{{$row->id}}" method="post">
+						<form action="/delete/{{$row->id}}/delete" method="post">
 						{{method_field("DELETE")}}
 						{{csrf_field()}}
-							<button title="删除" href="/admincates" onclick="system_category_del(this,'1')" class="ml-5" style="text-decoration:none; float:right;margin-right:30px;"><i class="Hui-iconfont">&#xe6e2;</i></button>
+							<button title="删除" href="" onclick="system_category_del(this,'1')" class="ml-5" style="text-decoration:none; float:right;margin-right:30px;"><i class="Hui-iconfont">&#xe6e2;</i></button>	
 						</form>	
-							<button title="编辑" href="javascript:;" onclick="system_category_edit('分类编辑','/resource/{{$row->id}}/edit','1','700','480')" style="text-decoration:none; float:right;"><i class="Hui-iconfont">&#xe6df;</i></button>
+							<button title="编辑" href="/editrole/{{$row->id}}/editrole" onclick="system_category_edit('分类编辑','/resource/{{$row->id}}/edit','1','700','480')" style="text-decoration:none; float:right;"><i class="Hui-iconfont">&#xe6df;</i></button>
 							<a href="/adminauth/{{$row->id}}" class="btn btn-success">分配权限</a>
 					</td>
-
-
 				</tr>
 				@endforeach
 			</tbody>
